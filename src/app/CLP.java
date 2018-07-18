@@ -1,5 +1,7 @@
 package app;
 
+import core.Einstein;
+
 /**
  * Main class.
  * 
@@ -8,7 +10,9 @@ package app;
 public class CLP {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        Einstein einstein = new Einstein();
+        einstein.model();
+        System.out.println(einstein.search());
     }
     
 }
