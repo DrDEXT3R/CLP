@@ -1,6 +1,7 @@
 package app;
 
 import core.Einstein;
+import core.MapColoring;
 import core.Museum;
 
 /**
@@ -21,6 +22,11 @@ public class CLP {
         Museum museum = new Museum();
         museum.model();
         System.out.println(museum.search() + "\n\n");
+        
+        System.out.println("***** Map coloring *****");
+        MapColoring map = new MapColoring();
+        map.model();
+        System.out.println(map.search() + "\n\n");
     }
     
 }
