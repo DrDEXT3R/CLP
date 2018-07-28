@@ -1,5 +1,7 @@
 package gui.controllers;
 
+import core.Einstein;
+import core.Museum;
 import gui.MainWindow;
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +26,13 @@ public class MuseumController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        MainWindow mainWindow = new MainWindow();
+        Museum activeModule = (Museum) mainWindow.getModule(1);
+        activeModule.model();
+        activeModule.search();
+        
+        activeModule.getSolutionAsArray();
+        //String[][] solution = activeModule.getSolutionAsArray();
     }    
     
     @FXML
@@ -32,7 +41,7 @@ public class MuseumController implements Initializable {
         loader.setLocation(getClass().getResource("/gui/FXML/homePage.fxml"));
         Scene scene = new Scene(loader.load());
         MainWindow mainWindow = new MainWindow();
-        Stage newWindow = mainWindow.getInstance();
+        Stage newWindow = mainWindow.getStage();
         newWindow.setScene(scene);
         newWindow.show();
     }

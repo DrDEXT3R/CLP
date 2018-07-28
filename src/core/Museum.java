@@ -16,14 +16,14 @@ import org.jacop.search.SimpleSelect;
  * @author Tomasz Strzoda
  */
 public class Museum extends Base {
+    
+    final int SIZE = 4;
      
     @Override
     public void model() {
         store = new Store();        
-        vars = new ArrayList<IntVar>();
+        //vars = new ArrayList<IntVar>();
 
-        final int SIZE = 4;
-        
         IntVar[] americans = new IntVar[SIZE];
         IntVar[] belgians = new IntVar[SIZE];
         IntVar[] czech = new IntVar[SIZE];
@@ -154,6 +154,13 @@ public class Museum extends Base {
 
         output += "\n\nTime: " + Long.toString(T2-T1) + "ns";
         return output;
+    }
+    
+    @Override
+    public String[][] getSolutionAsArray() {
+        String[][] solution = new String[SIZE][SIZE];
+
+        return solution;
     }
     
 }

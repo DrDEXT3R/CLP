@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import org.jacop.constraints.Alldifferent;
 import org.jacop.constraints.Distance;
 import org.jacop.constraints.XeqC;
@@ -20,18 +21,20 @@ import org.jacop.search.SimpleSelect;
  */
 public class Einstein extends Base {
     
+    final int SIZE = 5;
+    
     enum Pet { DOGS , BIRDS, HORSES, CATS, FISH; }
     enum Drink { TEA, COFFEE, MILK, BEER, WATER; }
     enum Color { RED, GREEN, WHITE, YELLOW, BLUE; }
     enum Nation { ENGLISHMAN, SWEDE, DANE, NORWEGIAN, GERMAN; }
     enum Cigarette { PALLMALL, DUNHILL, BLUEMASTER, PRINCE, BLEND; }
+    enum OrderOfCategories { COLOR, NATION, PET, DRINK, CIGARETTE; }
     
     @Override
     public void model() {
         store = new Store();
-        vars = new ArrayList<IntVar>();
+        //vars = new ArrayList<IntVar>();
         
-        final int SIZE = 5;
         final IntVar DIST_1 = new IntVar(store, 1, 1);
 		 
         IntVar pet[] = new IntVar[SIZE];
@@ -87,9 +90,51 @@ public class Einstein extends Base {
         label = new DepthFirstSearch<>();   
         output += label.labeling(store, select);
         T2 = System.nanoTime();
-
-        output += "\n\nTime: " + Long.toString(T2-T1) + "ns";
+        
+        time_ns = T2 - T1;
+        
         return output;
+    }
+    
+    @Override
+    public String[][] getSolutionAsArray() {
+        String[][] solution = new String[SIZE][SIZE];
+        boolean found = false;
+        // Sorting array.
+        for (int i = 0; i < vars.size(); i++, found = false) {
+            // Var is a Pet.
+            for (int j = 0; j < SIZE && found != true; j++) 
+                if (vars.get(i).id.equals( Pet.values()[j].toString() )) {
+                    solution[vars.get(i).value()-1][2] = vars.get(i).id;
+                    found = true;
+                }
+            // Var is a Color.
+            for (int j = 0; j < SIZE && found != true; j++) 
+                if (vars.get(i).id.equals( Color.values()[j].toString() )) {
+                    solution[vars.get(i).value()-1][0] = vars.get(i).id;
+                    found = true;
+                }
+            // Var is a Drink.
+            for (int j = 0; j < SIZE && found != true; j++) 
+                if (vars.get(i).id.equals( Drink.values()[j].toString() )) {
+                    solution[vars.get(i).value()-1][3] = vars.get(i).id;
+                    found = true;
+                }
+            // Var is a Nation.
+            for (int j = 0; j < SIZE && found != true; j++) 
+                if (vars.get(i).id.equals( Nation.values()[j].toString() )) {
+                    solution[vars.get(i).value()-1][1] = vars.get(i).id;
+                    found = true;
+                }
+            // Var is a Cigar.
+            for (int j = 0; j < SIZE && found != true; j++) 
+                if (vars.get(i).id.equals( Cigarette.values()[j].toString() )) {
+                    solution[vars.get(i).value()-1][4] = vars.get(i).id;
+                    found = true;
+                }
+        }
+
+        return solution;
     }
     
 }

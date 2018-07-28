@@ -12,12 +12,14 @@ import org.jacop.search.Search;
  */
 public class Base {
     
-    // Store for CLP variables
+    // Store for CLP variables.
     protected Store store;
-    // Label for searching solution
+    // Label for searching solution.
     protected Search label;
-    // ArrayList of CLP variables
+    // ArrayList of CLP variables.
     protected ArrayList<IntVar> vars;
+    
+    protected long time_ns;
     
     /**
      * Method for modeling CLP problem.
@@ -31,6 +33,19 @@ public class Base {
      */
     public String search() {    
        return "";
+    }
+    
+    public Base() {
+        vars = new ArrayList<>();
+    }
+    
+    public String[][] getSolutionAsArray() { 
+        String[][] array = new String[0][0];
+        return array;
+    }
+    
+    public double getTime() {
+        return (time_ns/1000000000.0);
     }
     
 }

@@ -45,7 +45,7 @@ public class HomePageController implements Initializable {
         
         Scene scene = new Scene(loader.load());
         MainWindow mainWindow = new MainWindow();
-        Stage newWindow = mainWindow.getInstance();
+        Stage newWindow = mainWindow.getStage();
         newWindow.setScene(scene);
         newWindow.show();
     }
