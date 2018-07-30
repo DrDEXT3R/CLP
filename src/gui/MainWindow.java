@@ -40,12 +40,6 @@ public class MainWindow extends Application {
         mainWindow.setScene(homePage);
         mainWindow.setTitle("CLP Calculator");
         mainWindow.show();
-        
-        
-//        Einstein activeModule = (Einstein) modules.get(0);
-//        activeModule.model();
-//        System.out.println(activeModule.search());
-//        activeModule.getSolutionAsArray();
     }
     
     public Stage getStage() {

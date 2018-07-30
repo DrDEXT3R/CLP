@@ -1,6 +1,5 @@
 package core;
 
-import java.util.ArrayList;
 import org.jacop.constraints.XplusYlteqZ;
 import org.jacop.constraints.cumulative.CumulativeUnary;
 import org.jacop.core.IntVar;
@@ -18,6 +17,7 @@ import org.jacop.search.SimpleSelect;
 public class Museum extends Base {
     
     final int SIZE = 4;
+    final int museumStart = 10*60;  
      
     @Override
     public void model() {
@@ -151,16 +151,35 @@ public class Museum extends Base {
         label = new DepthFirstSearch<>();   
         output += label.labeling(store, select);
         T2 = System.nanoTime();
-
-        output += "\n\nTime: " + Long.toString(T2-T1) + "ns";
+        
+        time_ns = T2 - T1;
+        
         return output;
     }
     
     @Override
     public String[][] getSolutionAsArray() {
-        String[][] solution = new String[SIZE][SIZE];
+        String[][] solution = new String[SIZE][SIZE+1];
+        
+        // Setting first column - nationality names.
+        for (int i = 0; i < SIZE; i++) {
+            String s = vars.get(i).id;
+            solution[i][0] = s.substring(0, s.indexOf("["));
+        }
+        // Setting main content - time.
+        for (int i = 0; i < SIZE; i++)
+            for (int j = 0; j < SIZE; j++) 
+                solution[j][i+1] = min2time(vars.get(i*SIZE+j).value()+museumStart);
 
         return solution;
+    }
+    
+    private static String min2time(final int min) {
+        final int hour = min / 60, minute = min % 60;
+        String time = (hour < 10 ? "0" : "") + hour;
+        time += ":";
+        time += (minute < 10 ? "0" : "") + minute;
+        return time;
     }
     
 }

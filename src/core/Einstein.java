@@ -1,7 +1,5 @@
 package core;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import org.jacop.constraints.Alldifferent;
 import org.jacop.constraints.Distance;
 import org.jacop.constraints.XeqC;
@@ -98,41 +96,55 @@ public class Einstein extends Base {
     
     @Override
     public String[][] getSolutionAsArray() {
-        String[][] solution = new String[SIZE][SIZE];
+        String[][] solution = new String[SIZE][SIZE+1];
+        
+        // Setting first column - house number.
+        for (int i = 0; i < SIZE; i++)
+            solution[i][0] = Integer.toString(i+1);
+        
+        // Setting main content - information about the house.
         boolean found = false;
-        // Sorting array.
         for (int i = 0; i < vars.size(); i++, found = false) {
             // Var is a Pet.
             for (int j = 0; j < SIZE && found != true; j++) 
                 if (vars.get(i).id.equals( Pet.values()[j].toString() )) {
-                    solution[vars.get(i).value()-1][2] = vars.get(i).id;
+                    solution[vars.get(i).value()-1][3] = vars.get(i).id;
                     found = true;
                 }
-            // Var is a Color.
+            // Var is a Colour.
             for (int j = 0; j < SIZE && found != true; j++) 
                 if (vars.get(i).id.equals( Color.values()[j].toString() )) {
-                    solution[vars.get(i).value()-1][0] = vars.get(i).id;
+                    solution[vars.get(i).value()-1][1] = vars.get(i).id;
                     found = true;
                 }
             // Var is a Drink.
             for (int j = 0; j < SIZE && found != true; j++) 
                 if (vars.get(i).id.equals( Drink.values()[j].toString() )) {
-                    solution[vars.get(i).value()-1][3] = vars.get(i).id;
+                    solution[vars.get(i).value()-1][4] = vars.get(i).id;
                     found = true;
                 }
             // Var is a Nation.
             for (int j = 0; j < SIZE && found != true; j++) 
                 if (vars.get(i).id.equals( Nation.values()[j].toString() )) {
-                    solution[vars.get(i).value()-1][1] = vars.get(i).id;
+                    solution[vars.get(i).value()-1][2] = vars.get(i).id;
                     found = true;
                 }
             // Var is a Cigar.
             for (int j = 0; j < SIZE && found != true; j++) 
                 if (vars.get(i).id.equals( Cigarette.values()[j].toString() )) {
-                    solution[vars.get(i).value()-1][4] = vars.get(i).id;
+                    solution[vars.get(i).value()-1][5] = vars.get(i).id;
                     found = true;
                 }
         }
+        
+        // Converting upper case to lower case in main content (e.g. WORD -> Word).
+        String s;
+        for (int i = 0; i < SIZE; i++)
+            for (int j = 1; j < SIZE+1; j++) {
+                s = solution[i][j];
+                s = s.substring(0, 1) + s.substring(1).toLowerCase();
+                solution[i][j] = s;
+            }
 
         return solution;
     }

@@ -16,10 +16,11 @@
       <Separator layoutX="200.0" layoutY="347.0" prefWidth="200.0" />
       <Button fx:id="einsteinSolve" layoutX="46.0" layoutY="297.0" mnemonicParsing="false" onAction="#einsteinSolveAction" text="Solve" />
       <Button fx:id="einsteinClean" layoutX="497.0" layoutY="297.0" mnemonicParsing="false" onAction="#einsteinCleanAction" text="Clean" />
-      <VBox layoutX="73.0" layoutY="55.0" prefHeight="200.0" prefWidth="454.0" spacing="10.0">
+      <VBox layoutX="36.0" layoutY="55.0" prefHeight="231.0" prefWidth="536.0" spacing="10.0">
          <children>
-            <TableView fx:id="einsteinTableView" prefHeight="164.0" prefWidth="475.0">
+            <TableView fx:id="einsteinTableView" prefHeight="198.0" prefWidth="497.0">
               <columns>
+                  <TableColumn fx:id="houseColumn" prefWidth="75.0" text="House" />
                   <TableColumn fx:id="colourColumn" text="Colour" />
                   <TableColumn fx:id="nationColumn" prefWidth="97.0" text="Nation" />
                   <TableColumn fx:id="petColumn" prefWidth="93.0" text="Pet" />

@@ -29,6 +29,7 @@ public class EinsteinController implements Initializable {
     
     @FXML private TextFlow einsteinTime;  
     @FXML private TableView<String[]> einsteinTableView;
+    @FXML private TableColumn<String[], String> houseColumn;
     @FXML private TableColumn<String[], String> colourColumn;
     @FXML private TableColumn<String[], String> nationColumn;
     @FXML private TableColumn<String[], String> petColumn;
@@ -69,11 +70,12 @@ public class EinsteinController implements Initializable {
         ObservableList<String[]> data = FXCollections.observableArrayList();
         data.addAll(Arrays.asList(solution));
         einsteinTableView.setItems(data);
-        this.setColumn(colourColumn, 0);
-        this.setColumn(nationColumn, 1);
-        this.setColumn(petColumn, 2);
-        this.setColumn(drinkColumn, 3);
-        this.setColumn(cigarColumn, 4);
+        this.setColumn(houseColumn, 0);
+        this.setColumn(colourColumn, 1);
+        this.setColumn(nationColumn, 2);
+        this.setColumn(petColumn, 3);
+        this.setColumn(drinkColumn, 4);
+        this.setColumn(cigarColumn, 5);
         
         // Calculation time.
         Text time = new Text("I calculated it in: " + activeModule.getTime() + "s");
