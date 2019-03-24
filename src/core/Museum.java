@@ -17,12 +17,17 @@ import org.jacop.search.SimpleSelect;
 public class Museum extends Base {
     
     final int SIZE = 4;
-    final int museumStart = 10*60;  
+    final int museumStart = 10*60; 
+    
+    final String[] exhibitionsNames = { "drawings", "paintings", "sculptures", "photographs" };
+    final int[][] durations = { {60, 45, 30, 15},
+                                {20, 15, 60, 60},
+                                {30, 60, 20, 45},
+                                {45, 10, 60, 30} };
      
     @Override
     public void model() {
         store = new Store();        
-        //vars = new ArrayList<IntVar>();
 
         IntVar[] americans = new IntVar[SIZE];
         IntVar[] belgians = new IntVar[SIZE];
@@ -174,6 +179,20 @@ public class Museum extends Base {
         return solution;
     }
     
+    /**
+     * Array for Gantt Chart
+     * @return 
+     */
+    public int[][] getSolutionAsRawArray() {
+        int[][] solution = new int[SIZE][SIZE];
+        
+        for (int i = 0; i < SIZE; i++)
+            for (int j = 0; j < SIZE; j++) 
+                solution[j][i] = vars.get(i*SIZE+j).value()+museumStart;
+        
+        return solution;
+    }
+    
     private static String min2time(final int min) {
         final int hour = min / 60, minute = min % 60;
         String time = (hour < 10 ? "0" : "") + hour;
@@ -182,4 +201,15 @@ public class Museum extends Base {
         return time;
     }
     
+    public int getSize() {
+        return SIZE;
+    }
+    
+    public int[][] getDurations() {
+        return durations;
+    }
+    
+    public String[] getExhibitionsNames() {
+        return exhibitionsNames;
+    }
 }

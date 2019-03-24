@@ -1,5 +1,6 @@
 package core;
 
+import java.util.ArrayList;
 import org.jacop.constraints.Alldifferent;
 import org.jacop.constraints.Constraint;
 import org.jacop.core.IntVar;
@@ -17,32 +18,19 @@ import org.jacop.search.SelectChoicePoint;
 public class MapColoring extends Base {
    
     IntVar[] regions;
+    IntVar[] group; 
+    int noOfRegions;
     
     @Override
     public void model() {
         store = new Store(); 
-
-        int NUMBER_OF_REGIONS = 6;
         
         // Define finite domain variables.
-        regions = new IntVar[NUMBER_OF_REGIONS];
+        regions = new IntVar[noOfRegions];
        
-        for (int i=0; i<NUMBER_OF_REGIONS; i++) {
-            regions[i] = new IntVar(store, "regions"+i, 1, NUMBER_OF_REGIONS);
+        for (int i=0; i<noOfRegions; i++) {
+            regions[i] = new IntVar(store, "regions"+i, 1, noOfRegions);
         }
-        
-        // Regions that can't have the same color.
-        IntVar[] ctr1 = {regions[2], regions[3], regions[4], regions[5]};
-        Constraint ctr = new Alldifferent(ctr1);
-        store.impose(ctr);
-        
-        IntVar[] ctr2 = {regions[0], regions[1], regions[2], regions[3]};
-        ctr = new Alldifferent(ctr2);
-        store.impose(ctr);
-        
-        IntVar[] ctr3 = {regions[0], regions[3], regions[5]};
-        ctr = new Alldifferent(ctr3);
-        store.impose(ctr);
     }
     
     @Override
@@ -58,6 +46,62 @@ public class MapColoring extends Base {
 
         output += "\n\nTime: " + Long.toString(T2-T1) + "ns";
         return output;
+    }
+    
+     public void sendGroup(ArrayList<Character> neighboringRegions) {
+        group = new IntVar[neighboringRegions.size()];
+        int regionInAscii;
+
+        for (int i = 0; i < neighboringRegions.size(); i++) {
+            regionInAscii  = (int)neighboringRegions.get(i) - 65;
+            group[i] = regions[regionInAscii];
+        }
+        Constraint ctr = new Alldifferent(group);
+        store.impose(ctr);  
+    }
+     
+    public void setNoOfRegions(int i) {
+        noOfRegions = i;
+    }
+    
+    @Override
+    public String[][] getSolutionAsArray() {
+        
+        String[][] solution = new String[4][3];
+        for (int i = 0; i < 4; i++) 
+            solution[i][0] = "";
+
+        for (int i = 0; i < noOfRegions; i++) {
+            int j = this.getColorIndex(i);
+            solution[j-1][0] += Character.toString((char)(65+i));
+            solution[j-1][0] += " ";
+            solution[j-1][1] = Integer.toString( this.getColorIndex(i) ); 
+            solution[j-1][2] = this.getColorName(this.getColorIndex(i)-1).name();   
+        }
+        
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(solution[i][j] + "   ");
+            }
+            System.out.println();
+        }
+        
+        return solution;
+    }
+    
+    public int getColorIndex(int i){
+        return regions[i].value();
+    }
+    
+    public Colors getColorName(int i){
+        return Colors.values()[i];
+    }
+    
+    public enum Colors {
+        blue, 
+        green, 
+        red, 
+        yellow, 
     }
     
 }

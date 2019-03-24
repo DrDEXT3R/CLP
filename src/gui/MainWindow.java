@@ -11,6 +11,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 import static javafx.application.Application.launch;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 
 /**
  * Main class.
@@ -28,6 +31,7 @@ public class MainWindow extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {  
+        
         modules = new ArrayList<>();
         modules.add(new Einstein());
         modules.add(new Museum());
@@ -40,6 +44,10 @@ public class MainWindow extends Application {
         mainWindow.setScene(homePage);
         mainWindow.setTitle("CLP Calculator");
         mainWindow.show();
+        
+
+
+
     }
     
     public Stage getStage() {

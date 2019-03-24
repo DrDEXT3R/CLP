@@ -21,7 +21,7 @@ public class Einstein extends Base {
     
     final int SIZE = 5;
     
-    enum Pet { DOGS , BIRDS, HORSES, CATS, FISH; }
+    enum Pet { DOGS, BIRDS, HORSES, CATS, FISH; }
     enum Drink { TEA, COFFEE, MILK, BEER, WATER; }
     enum Color { RED, GREEN, WHITE, YELLOW, BLUE; }
     enum Nation { ENGLISHMAN, SWEDE, DANE, NORWEGIAN, GERMAN; }
@@ -31,7 +31,6 @@ public class Einstein extends Base {
     @Override
     public void model() {
         store = new Store();
-        //vars = new ArrayList<IntVar>();
         
         final IntVar DIST_1 = new IntVar(store, 1, 1);
 		 

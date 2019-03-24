@@ -28,5 +28,6 @@
       </VBox>
       <Button fx:id="museumSolve" layoutX="63.0" layoutY="309.0" mnemonicParsing="false" onAction="#museumSolveAction" text="Solve" />
       <Button fx:id="museumClean" layoutX="487.0" layoutY="309.0" mnemonicParsing="false" onAction="#museumCleanAction" text="Clean" />
+      <Button fx:id="museumGanttChart" layoutX="261.0" layoutY="309.0" mnemonicParsing="false" onAction="#museumGanttChartAction" text="Gantt Chart" />
    </children>
 </Pane>
