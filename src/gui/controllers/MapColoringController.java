@@ -3,6 +3,8 @@ package gui.controllers;
 import core.Einstein;
 import core.MapColoring;
 import gui.MainWindow;
+
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,6 +37,9 @@ import javafx.stage.Stage;
  */
 public class MapColoringController implements Initializable {
 
+    @FXML private Button addGroup;
+    @FXML private Button mapColoringSolve;
+    @FXML private Label inputRangeLabel;
     @FXML private TextFlow mapColoringTime; 
     @FXML private TextField groupTextField;
     @FXML private TextArea allGroups;
@@ -43,7 +48,7 @@ public class MapColoringController implements Initializable {
     @FXML private TableColumn<String[], String> regionsColumn;
     @FXML private TableColumn<String[], String> colorIndexColumn;
     @FXML private TableColumn<String[], String> colorNameColumn;
-    
+
     ObservableList<Integer> list = FXCollections.observableArrayList();
     
     String groups;
@@ -52,9 +57,9 @@ public class MapColoringController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        for (int i = 1; i < 100; i++) 
-            list.add(i); 
+        int alphabetLength = 26;
+        for (int i = 0; i < alphabetLength; i++)
+            list.add(i + 1);
         noOfRegionsComboBox.setItems(list);
         
         groups = new String();
@@ -76,7 +81,6 @@ public class MapColoringController implements Initializable {
     
     @FXML
     void addGroupAction(ActionEvent event) {
-        
         String s = groupTextField.getText().toUpperCase();
         groups += s + "\n";
         allGroups.setText(groups);
@@ -96,7 +100,7 @@ public class MapColoringController implements Initializable {
         activeModule.sendGroup(neighboringRegions);
 
         neighboringRegions.clear();
-
+        groupTextField.clear();
     }
 
     void setColumn(TableColumn<String[], String> column, int colNo) {
@@ -134,13 +138,28 @@ public class MapColoringController implements Initializable {
         MainWindow mainWindow = new MainWindow();
         MapColoring activeModule = (MapColoring) mainWindow.getModule(2);
         activeModule.setNoOfRegions(noOfRegionsComboBox.getValue());
+
+        groupTextField.setDisable(false);
+        mapColoringSolve.setDisable(false);
+        addGroup.setDisable(false);
+
+        char border1 = (char) (noOfRegionsComboBox.getValue() + 64);
+        char border2 = (char) (noOfRegionsComboBox.getValue() + 96);
+        inputRangeLabel.setText("(A-" + border1 + " or a-" + border2 + ")");
     }
     
     @FXML
     void mapColoringCleanAction(ActionEvent event) {
-        //mapColoringTime.getChildren().clear();
-        //mapColoringTableView.getItems().clear();
-        //allGroups.clear();
+        mapColoringTime.getChildren().clear();
+        mapColoringTableView.getItems().clear();
+        allGroups.clear();
+        groupTextField.clear();
+        noOfRegionsComboBox.valueProperty().set(null);
+        groups = new String();
+        mapColoringIsModeled = false;
+        groupTextField.setDisable(true);
+        mapColoringSolve.setDisable(true);
+        addGroup.setDisable(true);
     }
 
     

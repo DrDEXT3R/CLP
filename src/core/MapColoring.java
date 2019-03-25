@@ -44,7 +44,8 @@ public class MapColoring extends Base {
         output += label.labeling(store, select);
         T2 = System.nanoTime();
 
-        output += "\n\nTime: " + Long.toString(T2-T1) + "ns";
+        time_ns = T2 - T1;
+
         return output;
     }
     
@@ -78,14 +79,7 @@ public class MapColoring extends Base {
             solution[j-1][1] = Integer.toString( this.getColorIndex(i) ); 
             solution[j-1][2] = this.getColorName(this.getColorIndex(i)-1).name();   
         }
-        
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print(solution[i][j] + "   ");
-            }
-            System.out.println();
-        }
-        
+
         return solution;
     }
     
