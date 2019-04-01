@@ -40,7 +40,7 @@ public class EinsteinController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {        
     }    
     
-    void setColumn(TableColumn<String[], String> column, int colNo) {
+    private void setColumn(TableColumn<String[], String> column, int colNo) {
         column.setCellValueFactory(cellData -> {   
             String[] x = cellData.getValue();
             return new SimpleStringProperty(x != null && x.length>1 ? x[colNo] : "<no value>");        
@@ -65,23 +65,27 @@ public class EinsteinController implements Initializable {
         activeModule.model();
         activeModule.search();
         String[][] solution = activeModule.getSolutionAsArray();
-        
-        // Filling in the TableView.
+
+        fillTableView(solution);
+
+        // Calculation time.
+        Text time = new Text("I calculated it in: " + activeModule.getTime() + "s");
+        einsteinTime.getChildren().add(time);
+    }
+
+    private void fillTableView(String[][] solution) {
         ObservableList<String[]> data = FXCollections.observableArrayList();
         data.addAll(Arrays.asList(solution));
         einsteinTableView.setItems(data);
+
         this.setColumn(houseColumn, 0);
         this.setColumn(colourColumn, 1);
         this.setColumn(nationColumn, 2);
         this.setColumn(petColumn, 3);
         this.setColumn(drinkColumn, 4);
         this.setColumn(cigarColumn, 5);
-        
-        // Calculation time.
-        Text time = new Text("I calculated it in: " + activeModule.getTime() + "s");
-        einsteinTime.getChildren().add(time);
     }
-    
+
     @FXML
     void einsteinCleanAction(ActionEvent event) {
         einsteinTime.getChildren().clear();

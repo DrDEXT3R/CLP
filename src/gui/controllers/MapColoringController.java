@@ -1,10 +1,8 @@
 package gui.controllers;
 
-import core.Einstein;
 import core.MapColoring;
 import gui.MainWindow;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -12,7 +10,6 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,7 +37,7 @@ public class MapColoringController implements Initializable {
     @FXML private Button addGroup;
     @FXML private Button mapColoringSolve;
     @FXML private Label inputRangeLabel;
-    @FXML private TextFlow mapColoringTime; 
+    @FXML private TextFlow mapColoringTime;
     @FXML private TextField groupTextField;
     @FXML private TextArea allGroups;
     @FXML private ComboBox<Integer> noOfRegionsComboBox;
@@ -50,24 +47,23 @@ public class MapColoringController implements Initializable {
     @FXML private TableColumn<String[], String> colorNameColumn;
 
     ObservableList<Integer> list = FXCollections.observableArrayList();
-    
+
     String groups;
     boolean mapColoringIsModeled;
     ArrayList<Character> neighboringRegions;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         int alphabetLength = 26;
         for (int i = 0; i < alphabetLength; i++)
             list.add(i + 1);
         noOfRegionsComboBox.setItems(list);
-        
+
         groups = new String();
         mapColoringIsModeled = false;
         neighboringRegions = new ArrayList<>();
-        
-    }    
-    
+    }
+
     @FXML
     public void homeAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -78,21 +74,21 @@ public class MapColoringController implements Initializable {
         newWindow.setScene(scene);
         newWindow.show();
     }
-    
+
     @FXML
     void addGroupAction(ActionEvent event) {
         String s = groupTextField.getText().toUpperCase();
         groups += s + "\n";
         allGroups.setText(groups);
-        
+
         for (int i = 0; i < s.length(); i++) {
             char takenChar = s.charAt(i);
             if(takenChar != ' ')
                 neighboringRegions.add(takenChar);
         }
-        
+
         MainWindow mainWindow = new MainWindow();
-        MapColoring activeModule = (MapColoring) mainWindow.getModule(2);   
+        MapColoring activeModule = (MapColoring) mainWindow.getModule(2);
         if(!mapColoringIsModeled) {
             activeModule.model();
             mapColoringIsModeled = true;
@@ -104,50 +100,58 @@ public class MapColoringController implements Initializable {
     }
 
     void setColumn(TableColumn<String[], String> column, int colNo) {
-        column.setCellValueFactory(cellData -> {   
+        column.setCellValueFactory(cellData -> {
             String[] x = cellData.getValue();
-            return new SimpleStringProperty(x != null && x.length>1 ? x[colNo] : "<no value>");        
+            return new SimpleStringProperty(x != null && x.length>1 ? x[colNo] : "<no value>");
         });
     }
-    
+
     @FXML
     void mapColoringSolveAction(ActionEvent event) {
         MainWindow mainWindow = new MainWindow();
-        MapColoring activeModule = (MapColoring) mainWindow.getModule(2); 
-        System.out.println(activeModule.search());
+        MapColoring activeModule = (MapColoring) mainWindow.getModule(2);
+        activeModule.search();
         String[][] solution = activeModule.getSolutionAsArray();
-        
-        //Filling in the TableView.
-        ObservableList<String[]> data = FXCollections.observableArrayList();
-        data.addAll(Arrays.asList(solution));
-        mapColoringTableView.setItems(data);
-        
-        this.setColumn(regionsColumn, 0);
-        this.setColumn(colorIndexColumn, 1);
-        this.setColumn(colorNameColumn, 2);
-        
+
+        fillTableView(solution);
+
         // Calculation time.
         Text time = new Text("I calculated it in: " + activeModule.getTime() + "s");
         mapColoringTime.getChildren().add(time);
-        
-
     }
-    
+
+    private void fillTableView(String[][] solution) {
+        ObservableList<String[]> data = FXCollections.observableArrayList();
+        data.addAll(Arrays.asList(solution));
+        mapColoringTableView.setItems(data);
+
+        this.setColumn(regionsColumn, 0);
+        this.setColumn(colorIndexColumn, 1);
+        this.setColumn(colorNameColumn, 2);
+    }
+
     @FXML
     void noOfRegionsComboBoxAction(ActionEvent event) {
         MainWindow mainWindow = new MainWindow();
         MapColoring activeModule = (MapColoring) mainWindow.getModule(2);
         activeModule.setNoOfRegions(noOfRegionsComboBox.getValue());
 
-        groupTextField.setDisable(false);
-        mapColoringSolve.setDisable(false);
-        addGroup.setDisable(false);
+        hideUI(false);
+        setRangeLabel();
+    }
 
+    private void hideUI(boolean hide) {
+        groupTextField.setDisable(hide);
+        mapColoringSolve.setDisable(hide);
+        addGroup.setDisable(hide);
+    }
+
+    private void setRangeLabel() {
         char border1 = (char) (noOfRegionsComboBox.getValue() + 64);
         char border2 = (char) (noOfRegionsComboBox.getValue() + 96);
         inputRangeLabel.setText("(A-" + border1 + " or a-" + border2 + ")");
     }
-    
+
     @FXML
     void mapColoringCleanAction(ActionEvent event) {
         mapColoringTime.getChildren().clear();
@@ -157,10 +161,7 @@ public class MapColoringController implements Initializable {
         noOfRegionsComboBox.valueProperty().set(null);
         groups = new String();
         mapColoringIsModeled = false;
-        groupTextField.setDisable(true);
-        mapColoringSolve.setDisable(true);
-        addGroup.setDisable(true);
+        hideUI(true);
     }
 
-    
 }

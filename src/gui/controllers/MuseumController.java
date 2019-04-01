@@ -80,7 +80,14 @@ public class MuseumController implements Initializable {
         activeModule.search();
         String[][] solution = activeModule.getSolutionAsArray();
 
-        // Filling in the TableView.
+        fillTableView(solution);
+
+        // Calculation time.
+        Text time = new Text("I calculated it in: " + activeModule.getTime() + "s");
+        museumTime.getChildren().add(time);
+    }
+
+    private void fillTableView(String[][] solution) {
         ObservableList<String[]> data = FXCollections.observableArrayList();
         data.addAll(Arrays.asList(solution));
         museumTableView.setItems(data);
@@ -90,10 +97,6 @@ public class MuseumController implements Initializable {
         this.setColumn(paintingsColumn, 2);
         this.setColumn(sculpturesColumn, 3);
         this.setColumn(photographsColumn, 4);
-
-        // Calculation time.
-        Text time = new Text("I calculated it in: " + activeModule.getTime() + "s");
-        museumTime.getChildren().add(time);
     }
 
     @FXML
