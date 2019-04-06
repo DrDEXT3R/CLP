@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import static javafx.application.Application.launch;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 /**
@@ -41,10 +42,11 @@ public class MainWindow extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/gui/FXML/homePage.fxml"));
         Scene homePage = new Scene(loader.load());
+        //mainWindow.initStyle(StageStyle.UNDECORATED);
         mainWindow.setScene(homePage);
         mainWindow.setTitle("CLP Calculator");
         mainWindow.show();
-        
+
 
 
 
