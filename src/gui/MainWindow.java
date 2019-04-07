@@ -8,6 +8,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 import static javafx.application.Application.launch;
@@ -29,7 +30,10 @@ public class MainWindow extends Application {
     public static void main(String[] args) {
         launch(args); 
     }
-    
+
+    private double xOffset = 0;
+    private double yOffset = 0;
+
     @Override
     public void start(Stage primaryStage) throws IOException {  
         
@@ -43,13 +47,24 @@ public class MainWindow extends Application {
         loader.setLocation(getClass().getResource("/gui/FXML/homePage.fxml"));
         Scene homePage = new Scene(loader.load());
         //mainWindow.initStyle(StageStyle.UNDECORATED);
+
+        makeMovable(homePage);
+
         mainWindow.setScene(homePage);
         mainWindow.setTitle("CLP Calculator");
         mainWindow.show();
+    }
 
+    private void makeMovable(Scene page) {
+        page.setOnMousePressed(e -> {
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
+        });
 
-
-
+        page.setOnMouseDragged(e -> {
+            mainWindow.setX(e.getScreenX() - xOffset);
+            mainWindow.setY(e.getScreenY() - yOffset);
+        });
     }
     
     public Stage getStage() {

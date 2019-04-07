@@ -29,33 +29,13 @@ import javafx.stage.Stage;
  */
 public class HomePageController implements Initializable {
 
-    @FXML
-    private Button einstein;
+    @FXML private ImageView closeApp;
+    @FXML private ImageView minimizeApp;
+    @FXML private ImageView aboutApp;
+    @FXML private AnchorPane einstein;
+    @FXML private AnchorPane museum;
+    @FXML private AnchorPane mapColoring;
 
-    @FXML
-    private Button museum;
-
-    @FXML
-    private Button mapColoring;
-
-    @FXML
-    private ImageView closeApp;
-    @FXML
-    private ImageView minimizeApp;
-
-    @FXML
-    private AnchorPane einstein2;
-
-    @FXML
-    private AnchorPane museum2;
-
-    @FXML
-    private AnchorPane mapColoring2;
-
-
-    @FXML
-    private AnchorPane eiin;
-        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }  
@@ -64,7 +44,7 @@ public class HomePageController implements Initializable {
     public void menuAction(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         
-        if (e.getSource().equals(einstein)) 
+        if (e.getSource().equals(einstein))
             loader.setLocation(getClass().getResource("/gui/FXML/einstein.fxml"));
         else if (e.getSource().equals(museum)) 
             loader.setLocation(getClass().getResource("/gui/FXML/museum.fxml"));
@@ -86,33 +66,50 @@ public class HomePageController implements Initializable {
             MainWindow mainWindow = new MainWindow();
             mainWindow.getStage().setIconified(true);
         }
+        else if (e.getSource().equals(aboutApp))
+            System.out.println("About");
 
     }
 
+
+
+    @FXML
+    void menuAction(MouseEvent e) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        if (e.getSource().equals(einstein))
+            loader.setLocation(getClass().getResource("/gui/FXML/einstein.fxml"));
+        else if (e.getSource().equals(museum))
+            loader.setLocation(getClass().getResource("/gui/FXML/museum.fxml"));
+        else if (e.getSource().equals(mapColoring))
+            loader.setLocation(getClass().getResource("/gui/FXML/mapColoring.fxml"));
+
+        Scene scene = new Scene(loader.load());
+        MainWindow mainWindow = new MainWindow();
+        Stage newWindow = mainWindow.getStage();
+        newWindow.setScene(scene);
+        newWindow.show();
+    }
 
 
     @FXML
     void transparentOn(MouseEvent e) {
-        if (e.getSource().equals(closeApp))
-            closeApp.setOpacity(0.5);
-        else if (e.getSource().equals(minimizeApp))
-            minimizeApp.setOpacity(0.5);
-        else if (e.getSource().equals(eiin))
-            eiin.setOpacity(0.7);
-
+        if      (e.getSource().equals(closeApp))        closeApp.setOpacity(0.5);
+        else if (e.getSource().equals(minimizeApp))     minimizeApp.setOpacity(0.5);
+        else if (e.getSource().equals(aboutApp))        aboutApp.setOpacity(0.5);
+        else if (e.getSource().equals(einstein))        einstein.setOpacity(0.7);
+        else if (e.getSource().equals(museum))          museum.setOpacity(0.7);
+        else if (e.getSource().equals(mapColoring))     mapColoring.setOpacity(0.7);
     }
 
     @FXML
     void transparentOff(MouseEvent e) {
-        if (e.getSource().equals(closeApp))
-            closeApp.setOpacity(1);
-        else if (e.getSource().equals(minimizeApp))
-            minimizeApp.setOpacity(1);
-        else if (e.getSource().equals(eiin))
-            eiin.setOpacity(1);
+        if      (e.getSource().equals(closeApp))        closeApp.setOpacity(1);
+        else if (e.getSource().equals(minimizeApp))     minimizeApp.setOpacity(1);
+        else if (e.getSource().equals(aboutApp))        aboutApp.setOpacity(1);
+        else if (e.getSource().equals(einstein))        einstein.setOpacity(1);
+        else if (e.getSource().equals(museum))          museum.setOpacity(1);
+        else if (e.getSource().equals(mapColoring))     mapColoring.setOpacity(1);
     }
 
-
-
-    
 }
