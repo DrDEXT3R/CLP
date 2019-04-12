@@ -1,14 +1,13 @@
 package gui.controllers;
 
 import core.Museum;
+import gui.MovableStage;
 import gui.MuseumGanttChart;
 import gui.MainWindow;
-import gui.MuseumGanttChart;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,21 +16,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import org.jfree.ui.RefineryUtilities;
 
 /**
  * FXML Controller class for museum time schedule.
  *
  * @author Tomasz Strzoda
  */
-public class MuseumController implements Initializable {
+public class MuseumController extends MovableStage implements Initializable {
 
     @FXML private TextFlow museumTime;
     @FXML private TableView<String[]> museumTableView;
@@ -45,13 +41,6 @@ public class MuseumController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
-    void setColumn(TableColumn<String[], String> column, int colNo) {
-        column.setCellValueFactory(cellData -> {
-            String[] x = cellData.getValue();
-            return new SimpleStringProperty(x != null && x.length>1 ? x[colNo] : "<no value>");
-        });
-    }
-
     @FXML
     public void homeAction(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -59,6 +48,7 @@ public class MuseumController implements Initializable {
         Scene scene = new Scene(loader.load());
         MainWindow mainWindow = new MainWindow();
         Stage newWindow = mainWindow.getStage();
+        makeMovable(newWindow, scene);
         newWindow.setScene(scene);
         newWindow.show();
     }
@@ -99,9 +89,17 @@ public class MuseumController implements Initializable {
         this.setColumn(photographsColumn, 4);
     }
 
+    void setColumn(TableColumn<String[], String> column, int colNo) {
+        column.setCellValueFactory(cellData -> {
+            String[] x = cellData.getValue();
+            return new SimpleStringProperty(x != null && x.length>1 ? x[colNo] : "<no value>");
+        });
+    }
+
     @FXML
     void museumCleanAction(ActionEvent event) {
         museumTime.getChildren().clear();
         museumTableView.getItems().clear();
     }
+
 }

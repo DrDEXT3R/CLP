@@ -1,6 +1,5 @@
 package gui.controllers;
 
-import com.jfoenix.controls.JFXButton;
 import gui.MainWindow;
 
 
@@ -9,12 +8,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -38,8 +35,10 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }  
+    }
 
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @FXML
     void navBarAction(MouseEvent e) throws IOException {
@@ -53,17 +52,25 @@ public class HomePageController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/gui/FXML/about.fxml"));
             Scene secondScene = new Scene(loader.load());
-
             Stage newWindow = new Stage();
             newWindow.setScene(secondScene);
-
+            makeMovable(newWindow, secondScene);
             newWindow.initStyle(StageStyle.UNDECORATED);
             newWindow.show();
         }
-
     }
 
+    private void makeMovable(Stage stage, Scene page) {
+        page.setOnMousePressed(e -> {
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
+        });
 
+        page.setOnMouseDragged(e -> {
+            stage.setX(e.getScreenX() - xOffset);
+            stage.setY(e.getScreenY() - yOffset);
+        });
+    }
 
     @FXML
     void menuAction(MouseEvent e) throws IOException {
@@ -79,10 +86,12 @@ public class HomePageController implements Initializable {
         Scene scene = new Scene(loader.load());
         MainWindow mainWindow = new MainWindow();
         Stage newWindow = mainWindow.getStage();
+
+        makeMovable(newWindow, scene);
+
         newWindow.setScene(scene);
         newWindow.show();
     }
-
 
     @FXML
     void transparentOn(MouseEvent e) {

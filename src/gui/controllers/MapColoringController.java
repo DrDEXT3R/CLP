@@ -8,6 +8,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+
+import gui.MovableStage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,7 +34,7 @@ import javafx.stage.Stage;
  *
  * @author Tomasz Strzoda
  */
-public class MapColoringController implements Initializable {
+public class MapColoringController extends MovableStage implements Initializable {
 
     @FXML private Button addGroup;
     @FXML private Button mapColoringSolve;
@@ -71,6 +73,7 @@ public class MapColoringController implements Initializable {
         Scene scene = new Scene(loader.load());
         MainWindow mainWindow = new MainWindow();
         Stage newWindow = mainWindow.getStage();
+        makeMovable(newWindow, scene);
         newWindow.setScene(scene);
         newWindow.show();
     }
@@ -99,13 +102,6 @@ public class MapColoringController implements Initializable {
         groupTextField.clear();
     }
 
-    void setColumn(TableColumn<String[], String> column, int colNo) {
-        column.setCellValueFactory(cellData -> {
-            String[] x = cellData.getValue();
-            return new SimpleStringProperty(x != null && x.length>1 ? x[colNo] : "<no value>");
-        });
-    }
-
     @FXML
     void mapColoringSolveAction(ActionEvent event) {
         MainWindow mainWindow = new MainWindow();
@@ -128,6 +124,13 @@ public class MapColoringController implements Initializable {
         this.setColumn(regionsColumn, 0);
         this.setColumn(colorIndexColumn, 1);
         this.setColumn(colorNameColumn, 2);
+    }
+
+    void setColumn(TableColumn<String[], String> column, int colNo) {
+        column.setCellValueFactory(cellData -> {
+            String[] x = cellData.getValue();
+            return new SimpleStringProperty(x != null && x.length>1 ? x[colNo] : "<no value>");
+        });
     }
 
     @FXML

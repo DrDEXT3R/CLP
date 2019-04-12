@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+
+import gui.MovableStage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,7 +27,7 @@ import javafx.stage.Stage;
  *
  * @author Tomasz Strzoda
  */
-public class EinsteinController implements Initializable {
+public class EinsteinController extends MovableStage implements Initializable {
     
     @FXML private TextFlow einsteinTime;  
     @FXML private TableView<String[]> einsteinTableView;
@@ -35,16 +37,9 @@ public class EinsteinController implements Initializable {
     @FXML private TableColumn<String[], String> petColumn;
     @FXML private TableColumn<String[], String> drinkColumn;
     @FXML private TableColumn<String[], String> cigarColumn;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {        
-    }    
-    
-    private void setColumn(TableColumn<String[], String> column, int colNo) {
-        column.setCellValueFactory(cellData -> {   
-            String[] x = cellData.getValue();
-            return new SimpleStringProperty(x != null && x.length>1 ? x[colNo] : "<no value>");        
-        });
     }
     
     @FXML
@@ -54,6 +49,7 @@ public class EinsteinController implements Initializable {
         Scene scene = new Scene(loader.load());
         MainWindow mainWindow = new MainWindow();
         Stage newWindow = mainWindow.getStage();
+        makeMovable(newWindow, scene);
         newWindow.setScene(scene);
         newWindow.show();
     }
@@ -86,9 +82,17 @@ public class EinsteinController implements Initializable {
         this.setColumn(cigarColumn, 5);
     }
 
+    private void setColumn(TableColumn<String[], String> column, int colNo) {
+        column.setCellValueFactory(cellData -> {
+            String[] x = cellData.getValue();
+            return new SimpleStringProperty(x != null && x.length>1 ? x[colNo] : "<no value>");
+        });
+    }
+
     @FXML
     void einsteinCleanAction(ActionEvent event) {
         einsteinTime.getChildren().clear();
         einsteinTableView.getItems().clear();
     }
+
 }
