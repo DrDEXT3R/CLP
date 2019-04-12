@@ -8,8 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.AboutController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #3D4956;">
          <children>
@@ -23,12 +22,12 @@
                   <Font name="Berlin Sans FB Demi Bold" size="30.0" />
                </font>
             </Label>
-            <ImageView fx:id="minimizeApp" layoutX="223.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="minimizeAbout" layoutX="223.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/minimize.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="closeApp" layoutX="255.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="closeAbout" layoutX="255.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/close.png" />
                </image>

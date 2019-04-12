@@ -46,7 +46,7 @@ public class MainWindow extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/gui/FXML/homePage.fxml"));
         Scene homePage = new Scene(loader.load());
-        //mainWindow.initStyle(StageStyle.UNDECORATED);
+        mainWindow.initStyle(StageStyle.UNDECORATED);
 
         makeMovable(homePage);
 

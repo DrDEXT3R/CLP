@@ -19,7 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+import javafx.stage.StageStyle;
 
 
 /**
@@ -39,24 +39,7 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }  
-    
-    @FXML
-    public void menuAction(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        
-        if (e.getSource().equals(einstein))
-            loader.setLocation(getClass().getResource("/gui/FXML/einstein.fxml"));
-        else if (e.getSource().equals(museum)) 
-            loader.setLocation(getClass().getResource("/gui/FXML/museum.fxml"));
-        else if (e.getSource().equals(mapColoring)) 
-            loader.setLocation(getClass().getResource("/gui/FXML/mapColoring.fxml"));
-        
-        Scene scene = new Scene(loader.load());
-        MainWindow mainWindow = new MainWindow();
-        Stage newWindow = mainWindow.getStage();
-        newWindow.setScene(scene);
-        newWindow.show();
-    }
+
 
     @FXML
     void navBarAction(MouseEvent e) throws IOException {
@@ -67,25 +50,15 @@ public class HomePageController implements Initializable {
             mainWindow.getStage().setIconified(true);
         }
         else if (e.getSource().equals(aboutApp)) {
-            System.out.println("About");
-
-
-
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/gui/FXML/about.fxml"));
             Scene secondScene = new Scene(loader.load());
 
-            // New window (Stage)
             Stage newWindow = new Stage();
-            newWindow.setTitle("About");
             newWindow.setScene(secondScene);
 
-            // Set position of second window, related to primary window.
-            //newWindow.setX(primaryStage.getX() + 200);
-            //newWindow.setY(primaryStage.getY() + 100);
-
+            newWindow.initStyle(StageStyle.UNDECORATED);
             newWindow.show();
-
         }
 
     }
