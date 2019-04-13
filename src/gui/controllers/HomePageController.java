@@ -24,7 +24,7 @@ import javafx.stage.StageStyle;
  *
  * @author Tomasz Strzoda
  */
-public class HomePageController implements Initializable {
+public class HomePageController extends BasicOptions implements Initializable {
 
     @FXML private ImageView closeApp;
     @FXML private ImageView minimizeApp;
@@ -60,37 +60,16 @@ public class HomePageController implements Initializable {
         }
     }
 
-    private void makeMovable(Stage stage, Scene page) {
-        page.setOnMousePressed(e -> {
-            xOffset = e.getSceneX();
-            yOffset = e.getSceneY();
-        });
 
-        page.setOnMouseDragged(e -> {
-            stage.setX(e.getScreenX() - xOffset);
-            stage.setY(e.getScreenY() - yOffset);
-        });
-    }
 
     @FXML
     void menuAction(MouseEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-
         if (e.getSource().equals(einstein))
-            loader.setLocation(getClass().getResource("/gui/FXML/einstein.fxml"));
+            loadNewScene("/gui/FXML/einstein.fxml");
         else if (e.getSource().equals(museum))
-            loader.setLocation(getClass().getResource("/gui/FXML/museum.fxml"));
+            loadNewScene("/gui/FXML/museum.fxml");
         else if (e.getSource().equals(mapColoring))
-            loader.setLocation(getClass().getResource("/gui/FXML/mapColoring.fxml"));
-
-        Scene scene = new Scene(loader.load());
-        MainWindow mainWindow = new MainWindow();
-        Stage newWindow = mainWindow.getStage();
-
-        makeMovable(newWindow, scene);
-
-        newWindow.setScene(scene);
-        newWindow.show();
+            loadNewScene("/gui/FXML/mapColoring.fxml");
     }
 
     @FXML

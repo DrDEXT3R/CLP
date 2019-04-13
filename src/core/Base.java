@@ -10,7 +10,7 @@ import org.jacop.search.Search;
  * 
  * @author Tomasz Strzoda
  */
-public class Base {
+public abstract class Base {
     
     // Store for CLP variables
     protected Store store;

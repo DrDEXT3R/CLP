@@ -6,18 +6,13 @@ import gui.MainWindow;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
-import gui.MovableStage;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -27,14 +22,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class for map coloring problem.
  *
  * @author Tomasz Strzoda
  */
-public class MapColoringController extends MovableStage implements Initializable {
+public class MapColoringController extends BasicOptions implements Initializable {
 
     @FXML private Button addGroup;
     @FXML private Button mapColoringSolve;
@@ -68,14 +62,7 @@ public class MapColoringController extends MovableStage implements Initializable
 
     @FXML
     public void homeAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/gui/FXML/homePage.fxml"));
-        Scene scene = new Scene(loader.load());
-        MainWindow mainWindow = new MainWindow();
-        Stage newWindow = mainWindow.getStage();
-        makeMovable(newWindow, scene);
-        newWindow.setScene(scene);
-        newWindow.show();
+        loadNewScene("/gui/FXML/homePage.fxml");
     }
 
     @FXML
@@ -109,28 +96,12 @@ public class MapColoringController extends MovableStage implements Initializable
         activeModule.search();
         String[][] solution = activeModule.getSolutionAsArray();
 
-        fillTableView(solution);
+        TableColumn[] mapColoringCols = {regionsColumn, colorIndexColumn, colorNameColumn};
+        fillTableView(solution, mapColoringTableView, mapColoringCols);
 
         // Calculation time.
         Text time = new Text("I calculated it in: " + activeModule.getTime() + "s");
         mapColoringTime.getChildren().add(time);
-    }
-
-    private void fillTableView(String[][] solution) {
-        ObservableList<String[]> data = FXCollections.observableArrayList();
-        data.addAll(Arrays.asList(solution));
-        mapColoringTableView.setItems(data);
-
-        this.setColumn(regionsColumn, 0);
-        this.setColumn(colorIndexColumn, 1);
-        this.setColumn(colorNameColumn, 2);
-    }
-
-    void setColumn(TableColumn<String[], String> column, int colNo) {
-        column.setCellValueFactory(cellData -> {
-            String[] x = cellData.getValue();
-            return new SimpleStringProperty(x != null && x.length>1 ? x[colNo] : "<no value>");
-        });
     }
 
     @FXML
