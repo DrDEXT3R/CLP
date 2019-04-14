@@ -9,15 +9,10 @@ import java.util.ResourceBundle;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 
 /**
  * FXML Controller class for gui's home page.
@@ -37,9 +32,6 @@ public class HomePageController extends BasicOptions implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
-    private double xOffset = 0;
-    private double yOffset = 0;
-
     @FXML
     void navBarAction(MouseEvent e) throws IOException {
         if (e.getSource().equals(closeApp))
@@ -48,19 +40,9 @@ public class HomePageController extends BasicOptions implements Initializable {
             MainWindow mainWindow = new MainWindow();
             mainWindow.getStage().setIconified(true);
         }
-        else if (e.getSource().equals(aboutApp)) {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/gui/FXML/about.fxml"));
-            Scene secondScene = new Scene(loader.load());
-            Stage newWindow = new Stage();
-            newWindow.setScene(secondScene);
-            makeMovable(newWindow, secondScene);
-            newWindow.initStyle(StageStyle.UNDECORATED);
-            newWindow.show();
-        }
+        else if (e.getSource().equals(aboutApp))
+            createNewStage("/gui/FXML/about.fxml");
     }
-
-
 
     @FXML
     void menuAction(MouseEvent e) throws IOException {

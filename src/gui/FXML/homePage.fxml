@@ -12,83 +12,83 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.HomePageController">
    <children>
-      <AnchorPane prefHeight="130.0" prefWidth="600.0" style="-fx-background-color: #3D4956;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #3D4956;">
          <children>
-            <ImageView fx:id="closeApp" layoutX="554.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/close.png" />
+                  <Image url="@../images/calculator2_32x32.png" />
                </image>
             </ImageView>
-            <Label layoutX="46.0" layoutY="14.0" prefHeight="35.0" prefWidth="212.0" text="CLP Calculator" textFill="#eda647">
+            <Label layoutX="50.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" text="CLP Calculator" textFill="#eda647">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="30.0" />
                </font>
             </Label>
-            <ImageView layoutX="14.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aboutApp" layoutX="488.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/calculator.png" />
+                  <Image url="@../images/about1_32x32.png" />
                </image>
             </ImageView>
             <ImageView fx:id="minimizeApp" layoutX="522.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/minimize.png" />
+                  <Image url="@../images/minimize1_32x32.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="aboutApp" layoutX="488.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="closeApp" layoutX="554.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/about.png" />
+                  <Image url="@../images/close1_32x32.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
       <Line endX="496.4644775390625" startX="-100.0" stroke="#eda647" strokeWidth="5.0" />
-      <AnchorPane prefHeight="403.0" prefWidth="600.0" style="-fx-background-color: #3D4956;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="600.0" style="-fx-background-color: #3D4956;">
          <children>
             <HBox alignment="TOP_CENTER" layoutY="76.0" prefHeight="182.0" prefWidth="601.0" spacing="50.0">
                <children>
-                  <AnchorPane fx:id="einstein" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#menuAction" prefHeight="189.0" prefWidth="130.0" style="-fx-background-color: #3D4956;">
+                  <AnchorPane fx:id="einstein" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#menuAction" prefHeight="189.0" prefWidth="130.0" style="-fx-background-color: #3D4956;">
                      <children>
                         <ImageView layoutX="15.0" layoutY="14.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/einstein.png" />
+                              <Image url="@../images/einstein2_100x100.png" />
                            </image>
                         </ImageView>
                         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eda647" height="55.0" layoutX="8.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="115.0" />
-                        <Label alignment="CENTER" layoutX="8.0" layoutY="127.0" prefHeight="55.0" prefWidth="115.0" text="Einstein's &#10;Riddle" textAlignment="CENTER" textFill="#3d4956">
+                        <Label alignment="CENTER" layoutX="8.0" layoutY="127.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="115.0" text="Einstein's &#10;Riddle" textAlignment="CENTER" textFill="#3d4956">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="museum" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#menuAction" prefHeight="189.0" prefWidth="130.0" style="-fx-background-color: #3D4956;">
+                  <AnchorPane fx:id="museum" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#menuAction" prefHeight="189.0" prefWidth="130.0" style="-fx-background-color: #3D4956;">
                      <children>
                         <ImageView layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/museum.png" />
+                              <Image url="@../images/museum2_100x100.png" />
                            </image>
                         </ImageView>
                         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eda647" height="55.0" layoutX="8.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="115.0" />
-                        <Label alignment="CENTER" layoutX="8.0" layoutY="127.0" prefHeight="55.0" prefWidth="115.0" text="Museum&#10;of Art" textAlignment="CENTER" textFill="#3d4956">
+                        <Label alignment="CENTER" layoutX="8.0" layoutY="127.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="115.0" text="Museum&#10;of Art" textAlignment="CENTER" textFill="#3d4956">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="mapColoring" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#menuAction" prefHeight="189.0" prefWidth="130.0" style="-fx-background-color: #3D4956;">
+                  <AnchorPane fx:id="mapColoring" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#menuAction" prefHeight="189.0" prefWidth="130.0" style="-fx-background-color: #3D4956;">
                      <children>
-                        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eda647" height="55.0" layoutX="9.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="115.0" />
-                        <Label alignment="CENTER" layoutX="9.0" layoutY="127.0" prefHeight="55.0" prefWidth="115.0" text="Map&#10;Coloring" textAlignment="CENTER" textFill="#3d4956">
+                        <ImageView layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/map2_100x100.png" />
+                           </image>
+                        </ImageView>
+                        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eda647" height="55.0" layoutX="8.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="115.0" />
+                        <Label alignment="CENTER" layoutX="9.0" layoutY="127.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="115.0" text="Map&#10;Coloring" textAlignment="CENTER" textFill="#3d4956">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Label>
-                        <ImageView layoutX="16.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/map.png" />
-                           </image>
-                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>

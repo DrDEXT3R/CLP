@@ -3,14 +3,21 @@ package gui.controllers;
 import core.Einstein;
 import gui.MainWindow;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -20,8 +27,14 @@ import javafx.scene.text.TextFlow;
  * @author Tomasz Strzoda
  */
 public class EinsteinController extends BasicOptions implements Initializable {
-    
-    @FXML private TextFlow einsteinTime;  
+
+    @FXML private ImageView closeApp;
+    @FXML private ImageView minimizeApp;
+    @FXML private ImageView aboutApp;
+    @FXML private ImageView museumShortcut;
+    @FXML private ImageView homeShortcut;
+    @FXML private ImageView mapShortcut;
+    @FXML private TextFlow einsteinTime;
     @FXML private TableView<String[]> einsteinTableView;
     @FXML private TableColumn<String[], String> houseColumn;
     @FXML private TableColumn<String[], String> colourColumn;
@@ -31,16 +44,48 @@ public class EinsteinController extends BasicOptions implements Initializable {
     @FXML private TableColumn<String[], String> cigarColumn;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {        
+    public void initialize(URL url, ResourceBundle rb) {
     }
-    
+
     @FXML
-    public void homeAction(ActionEvent event) throws IOException {
+    public void homeAction(ActionEvent e) throws IOException {
         loadNewScene("/gui/FXML/homePage.fxml");
     }
-    
+
     @FXML
-    public void einsteinSolveAction(ActionEvent event) {
+    void navBarAction(MouseEvent e) throws IOException {
+        if (e.getSource().equals(closeApp))
+            Platform.exit();
+        else if (e.getSource().equals(minimizeApp)) {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.getStage().setIconified(true);
+        }
+        else if (e.getSource().equals(aboutApp))
+            createNewStage("/gui/FXML/about.fxml");
+    }
+
+    @FXML
+    void transparentOn(MouseEvent e) {
+        if      (e.getSource().equals(closeApp))        closeApp.setOpacity(0.5);
+        else if (e.getSource().equals(minimizeApp))     minimizeApp.setOpacity(0.5);
+        else if (e.getSource().equals(aboutApp))        aboutApp.setOpacity(0.5);
+        else if (e.getSource().equals(museumShortcut))  museumShortcut.setOpacity(0.5);
+        else if (e.getSource().equals(homeShortcut))    homeShortcut.setOpacity(0.5);
+        else if (e.getSource().equals(mapShortcut))     mapShortcut.setOpacity(0.5);
+    }
+
+    @FXML
+    void transparentOff(MouseEvent e) {
+        if      (e.getSource().equals(closeApp))        closeApp.setOpacity(1);
+        else if (e.getSource().equals(minimizeApp))     minimizeApp.setOpacity(1);
+        else if (e.getSource().equals(aboutApp))        aboutApp.setOpacity(1);
+        else if (e.getSource().equals(museumShortcut))  museumShortcut.setOpacity(1);
+        else if (e.getSource().equals(homeShortcut))    homeShortcut.setOpacity(1);
+        else if (e.getSource().equals(mapShortcut))     mapShortcut.setOpacity(1);
+    }
+
+    @FXML
+    public void einsteinSolveAction(ActionEvent e) {
         MainWindow mainWindow = new MainWindow();
         Einstein activeModule = (Einstein) mainWindow.getModule(0);
         activeModule.model();
@@ -51,14 +96,33 @@ public class EinsteinController extends BasicOptions implements Initializable {
         fillTableView(solution, einsteinTableView, einsteinCols);
 
         // Calculation time.
-        Text time = new Text("I calculated it in: " + activeModule.getTime() + "s");
+        Text time = new Text(round(activeModule.getTime(),6) + "s");
+        time.setFont(Font.font ("Berlin Sans FB Demi", 20));
+        time.setFill(Color.valueOf("#eda647"));
         einsteinTime.getChildren().add(time);
+    }
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 
     @FXML
-    void einsteinCleanAction(ActionEvent event) {
+    void einsteinCleanAction(ActionEvent e) {
         einsteinTime.getChildren().clear();
         einsteinTableView.getItems().clear();
+    }
+
+    @FXML
+    void bottomBarAction(MouseEvent e) throws IOException {
+        if (e.getSource().equals(museumShortcut))
+            loadNewScene("/gui/FXML/museum.fxml");
+        else if (e.getSource().equals(homeShortcut))
+            loadNewScene("/gui/FXML/homePage.fxml");
+        else if (e.getSource().equals(mapShortcut))
+            loadNewScene("/gui/FXML/mapColoring.fxml");
     }
 
 }

@@ -14,22 +14,22 @@
          <children>
             <ImageView layoutX="14.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/about2.png" />
+                  <Image url="@../images/about2_32x32.png" />
                </image>
             </ImageView>
-            <Label layoutX="49.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="212.0" text="About" textFill="#eda647">
+            <Label layoutX="50.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="212.0" text="About" textFill="#eda647">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="30.0" />
                </font>
             </Label>
             <ImageView fx:id="minimizeAbout" layoutX="223.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/minimize.png" />
+                  <Image url="@../images/minimize1_32x32.png" />
                </image>
             </ImageView>
             <ImageView fx:id="closeAbout" layoutX="255.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/close.png" />
+                  <Image url="@../images/close1_32x32.png" />
                </image>
             </ImageView>
          </children>

@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -46,6 +47,19 @@ public abstract class BasicOptions {
 
         makeMovable(newWindow, scene);
         newWindow.setScene(scene);
+        newWindow.show();
+    }
+
+    protected void createNewStage(String location) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/gui/FXML/about.fxml"));
+        Scene secondScene = new Scene(loader.load());
+
+        Stage newWindow = new Stage();
+        newWindow.setScene(secondScene);
+
+        makeMovable(newWindow, secondScene);
+        newWindow.initStyle(StageStyle.UNDECORATED);
         newWindow.show();
     }
 
