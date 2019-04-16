@@ -1,11 +1,16 @@
 package gui.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,6 +50,11 @@ public class AboutController implements Initializable {
     void transparentOff(MouseEvent e) {
         if      (e.getSource().equals(closeAbout))        closeAbout.setOpacity(1);
         else if (e.getSource().equals(minimizeAbout))     minimizeAbout.setOpacity(1);
+    }
+
+    @FXML
+    void linkAction(ActionEvent e) throws URISyntaxException, IOException {
+        Desktop.getDesktop().browse(new URI("https://github.com/DrDEXT3R"));
     }
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -37,11 +38,16 @@
       <Line endX="197.5" startX="-100.0" stroke="#eda647" strokeWidth="5.0" />
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="300.0" style="-fx-background-color: #3D4956;">
          <children>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="123.0" prefWidth="272.0" text="Calculator for solving problems using &#10;Constraint Logic Programming (v1.0)&#10;&#10;Author: Tomasz Strzoda&#10;https://github.com/DrDEXT3R" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="14.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="106.0" prefWidth="272.0" text="Calculator for solving problems using &#10;Constraint Logic Programming (v1.0)&#10;&#10;Author: Tomasz Strzoda" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
+            <Hyperlink layoutX="77.0" layoutY="98.0" onAction="#linkAction" text="GitHub: @DrDEXT3R" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Hyperlink>
          </children>
       </AnchorPane>
    </children>

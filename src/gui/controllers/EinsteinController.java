@@ -1,5 +1,6 @@
 package gui.controllers;
 
+import com.jfoenix.controls.JFXButton;
 import core.Einstein;
 import gui.MainWindow;
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class EinsteinController extends BasicOptions implements Initializable {
     @FXML private ImageView homeShortcut;
     @FXML private ImageView mapShortcut;
     @FXML private TextFlow einsteinTime;
+    @FXML private JFXButton einsteinSolve;
     @FXML private TableView<String[]> einsteinTableView;
     @FXML private TableColumn<String[], String> houseColumn;
     @FXML private TableColumn<String[], String> colourColumn;
@@ -45,11 +47,6 @@ public class EinsteinController extends BasicOptions implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }
-
-    @FXML
-    public void homeAction(ActionEvent e) throws IOException {
-        loadNewScene("/gui/FXML/homePage.fxml");
     }
 
     @FXML
@@ -100,6 +97,8 @@ public class EinsteinController extends BasicOptions implements Initializable {
         time.setFont(Font.font ("Berlin Sans FB Demi", 20));
         time.setFill(Color.valueOf("#eda647"));
         einsteinTime.getChildren().add(time);
+
+        einsteinSolve.setDisable(true);
     }
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
@@ -113,6 +112,8 @@ public class EinsteinController extends BasicOptions implements Initializable {
     void einsteinCleanAction(ActionEvent e) {
         einsteinTime.getChildren().clear();
         einsteinTableView.getItems().clear();
+
+        einsteinSolve.setDisable(false);
     }
 
     @FXML
