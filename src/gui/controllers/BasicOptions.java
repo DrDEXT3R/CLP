@@ -18,6 +18,7 @@ import java.util.Arrays;
 
 /**
  * Abstract class template for controllers.
+ * It contains all basic elements other than "@FXML".
  *
  * @author Tomasz Strzoda
  */
