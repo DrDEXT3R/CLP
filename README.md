@@ -7,6 +7,12 @@ Thanks to it, we can quickly see solution of:
 
 ![UI](https://i.imgur.com/ddb0IVm.png)
 
+## Deployment
+VM options:
+```
+--module-path ${PATH_TO_FX} --add-modules=javafx.controls,javafx.swing,javafx.fxml
+```
+
 ## Built With
 * [JDK 11](https://docs.oracle.com/en/java/javase/11/) - Java Development Kit
 * [OpenJFX](https://openjfx.io/openjfx-docs/) - Used to create GUI

@@ -7,6 +7,7 @@ import gui.MainWindow;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import gui.SwingFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,6 +47,8 @@ public class MuseumController extends BasicController implements Initializable {
         MainWindow mainWindow = new MainWindow();
         Museum activeModule = (Museum) mainWindow.getModule(1);
         MuseumGanttChart ganttChart = new MuseumGanttChart(newWindow, activeModule.getSolutionAsRawArray());
+        SwingFx swing = new SwingFx();
+
     }
 
     @FXML
