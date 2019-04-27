@@ -4,16 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import core.Museum;
 import gui.MuseumGanttChart;
 import gui.MainWindow;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-import gui.SwingFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -25,7 +20,7 @@ import javafx.stage.Stage;
  *
  * @author Tomasz Strzoda
  */
-public class MuseumController extends BasicController implements Initializable {
+public class MuseumController extends BasicController {
 
     @FXML private TextFlow museumTime;
     @FXML private JFXButton museumSolve;
@@ -36,10 +31,6 @@ public class MuseumController extends BasicController implements Initializable {
     @FXML private TableColumn<String[], String> sculpturesColumn;
     @FXML private TableColumn<String[], String> photographsColumn;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-    }
-
     @FXML
     void museumGanttChartAction(ActionEvent e) {
         Stage newWindow = new Stage();
@@ -47,8 +38,6 @@ public class MuseumController extends BasicController implements Initializable {
         MainWindow mainWindow = new MainWindow();
         Museum activeModule = (Museum) mainWindow.getModule(1);
         MuseumGanttChart ganttChart = new MuseumGanttChart(newWindow, activeModule.getSolutionAsRawArray());
-        SwingFx swing = new SwingFx();
-
     }
 
     @FXML

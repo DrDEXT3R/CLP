@@ -3,12 +3,11 @@ package gui.controllers;
 import com.jfoenix.controls.JFXButton;
 import core.Einstein;
 import gui.MainWindow;
-import java.net.URL;
-import java.util.ResourceBundle;
+
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.paint.Color;
@@ -21,7 +20,7 @@ import javafx.scene.text.TextFlow;
  *
  * @author Tomasz Strzoda
  */
-public class EinsteinController extends BasicController implements Initializable {
+public class EinsteinController extends BasicController{
 
     @FXML private TextFlow einsteinTime;
     @FXML private JFXButton einsteinSolve;
@@ -32,10 +31,6 @@ public class EinsteinController extends BasicController implements Initializable
     @FXML private TableColumn<String[], String> petColumn;
     @FXML private TableColumn<String[], String> drinkColumn;
     @FXML private TableColumn<String[], String> cigarColumn;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-    }
 
     @FXML
     public void einsteinSolveAction(ActionEvent e) {
@@ -63,6 +58,11 @@ public class EinsteinController extends BasicController implements Initializable
         einsteinTableView.getItems().clear();
 
         einsteinSolve.setDisable(false);
+    }
+
+    @FXML
+    void einsteinHelpAction(ActionEvent e) throws IOException {
+        createNewStage("/gui/FXML/einsteinHelp.fxml", 500,400);
     }
 
 }

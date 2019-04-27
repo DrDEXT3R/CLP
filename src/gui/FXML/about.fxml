@@ -23,12 +23,12 @@
                   <Font name="Berlin Sans FB Demi Bold" size="30.0" />
                </font>
             </Label>
-            <ImageView fx:id="minimizeAbout" layoutX="223.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="minimizeNewWindow" layoutX="223.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/minimize1_32x32.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="closeAbout" layoutX="255.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="closeNewWindow" layoutX="255.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/close1_32x32.png" />
                </image>

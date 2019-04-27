@@ -5,9 +5,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -53,9 +55,9 @@ public abstract class BasicOptions {
         newWindow.show();
     }
 
-    protected void createNewStage(String location) throws IOException {
+    protected void createNewStage(String location, int width, int height) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/gui/FXML/about.fxml"));
+        loader.setLocation(getClass().getResource(location));
         Scene secondScene = new Scene(loader.load());
 
         Stage newWindow = new Stage();
@@ -63,6 +65,10 @@ public abstract class BasicOptions {
 
         makeMovable(newWindow, secondScene);
         newWindow.initStyle(StageStyle.UNDECORATED);
+
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        newWindow.setX((primaryScreenBounds.getWidth() - width) / 2);
+        newWindow.setY((primaryScreenBounds.getHeight() - height) / 2);
         newWindow.show();
     }
 

@@ -7,8 +7,10 @@ import core.Museum;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 import static javafx.application.Application.launch;
@@ -52,6 +54,10 @@ public class MainWindow extends Application {
 
         mainWindow.setScene(homePage);
         mainWindow.setTitle("CLP Calculator");
+
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        mainWindow.setX((primaryScreenBounds.getWidth() - 600) / 2);
+        mainWindow.setY((primaryScreenBounds.getHeight() - 400) / 2 - 50);
         mainWindow.show();
     }
 

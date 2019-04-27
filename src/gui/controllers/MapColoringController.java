@@ -56,8 +56,6 @@ public class MapColoringController extends BasicController implements Initializa
             list.add(i + 1);
         noOfRegionsComboBox.setItems(list);
 
-
-
         groups = new String();
         mapColoringIsModeled = false;
         neighboringRegions = new ArrayList<>();
