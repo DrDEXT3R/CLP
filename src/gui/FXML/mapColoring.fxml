@@ -81,7 +81,7 @@
                                 <Font name="Arial" size="12.0" />
                             </font>
                         </JFXButton>
-                        <JFXButton alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #eda647;" text="Help" textAlignment="CENTER" textFill="#3d4956">
+                        <JFXButton fx:id="mapColoringHelp" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#mapColoringHelpAction" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #eda647;" text="Help" textAlignment="CENTER" textFill="#3d4956">
                             <font>
                                 <Font name="Arial" size="12.0" />
                             </font>

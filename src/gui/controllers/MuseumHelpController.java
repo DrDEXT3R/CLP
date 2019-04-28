@@ -1,7 +1,7 @@
 package gui.controllers;
 
 /**
- * FXML Controller class for Museum's help window.
+ * FXML Controller class for museum help window.
  *
  * @author Tomasz Strzoda
  */

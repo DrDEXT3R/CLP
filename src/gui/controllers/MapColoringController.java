@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import core.MapColoring;
 import gui.MainWindow;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -136,6 +137,11 @@ public class MapColoringController extends BasicController implements Initializa
         groups = new String();
         mapColoringIsModeled = false;
         hideUI(true);
+    }
+
+    @FXML
+    void mapColoringHelpAction(ActionEvent e) throws IOException {
+        createNewStage("/gui/FXML/mapColoringHelp.fxml", 500,400);
     }
 
 }
