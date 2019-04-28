@@ -2,8 +2,11 @@ package gui;
 
 import core.Museum;
 import javafx.embed.swing.SwingNode;
+
+import javafx.geometry.Rectangle2D;
 import javafx.scene.*;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.jfree.chart.*;
 import org.jfree.data.category.IntervalCategoryDataset;
@@ -11,6 +14,7 @@ import org.jfree.data.gantt.Task;
 import org.jfree.data.gantt.TaskSeries;
 import org.jfree.data.gantt.TaskSeriesCollection;
 import org.jfree.data.time.SimpleTimePeriod;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -25,6 +29,12 @@ public class MuseumGanttChart {
         final SwingNode chartSwingNode = new SwingNode();
         chartSwingNode.setContent( new ChartPanel( generateGanttChart(solution) ) );
         stage.setScene( new Scene( new StackPane(chartSwingNode) ) );
+
+        stage.setWidth(600);
+        stage.setHeight(400);
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primaryScreenBounds.getWidth() - 600) / 2);
+        stage.setY((primaryScreenBounds.getHeight() - 400) / 2);
         stage.show();
     }
 

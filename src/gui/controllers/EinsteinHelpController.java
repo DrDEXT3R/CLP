@@ -1,7 +1,7 @@
 package gui.controllers;
 
 /**
- * FXML Controller class for Einstein's Help Window.
+ * FXML Controller class for Einstein's help window.
  *
  * @author Tomasz Strzoda
  */

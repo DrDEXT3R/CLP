@@ -15,6 +15,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 /**
  * FXML Controller class for museum time schedule.
  *
@@ -24,6 +26,7 @@ public class MuseumController extends BasicController {
 
     @FXML private TextFlow museumTime;
     @FXML private JFXButton museumSolve;
+    @FXML private JFXButton museumGanttChart;
     @FXML private TableView<String[]> museumTableView;
     @FXML private TableColumn<String[], String> nationColumn;
     @FXML private TableColumn<String[], String> drawingsColumn;
@@ -34,7 +37,7 @@ public class MuseumController extends BasicController {
     @FXML
     void museumGanttChartAction(ActionEvent e) {
         Stage newWindow = new Stage();
-        newWindow.setTitle("Museum Schedule");
+        newWindow.setTitle("Museum Schedule (click to reload)");
         MainWindow mainWindow = new MainWindow();
         Museum activeModule = (Museum) mainWindow.getModule(1);
         MuseumGanttChart ganttChart = new MuseumGanttChart(newWindow, activeModule.getSolutionAsRawArray());
@@ -58,6 +61,7 @@ public class MuseumController extends BasicController {
         museumTime.getChildren().add(time);
 
         museumSolve.setDisable(true);
+        museumGanttChart.setDisable(false);
     }
 
     @FXML
@@ -66,6 +70,12 @@ public class MuseumController extends BasicController {
         museumTableView.getItems().clear();
 
         museumSolve.setDisable(false);
+        museumGanttChart.setDisable(true);
+    }
+
+    @FXML
+    void museumHelpAction(ActionEvent e) throws IOException {
+        createNewStage("/gui/FXML/museumHelp.fxml", 500,400);
     }
 
 }

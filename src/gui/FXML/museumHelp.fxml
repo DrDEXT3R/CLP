@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MuseumHelpController">
+    <children>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #3D4956;">
+            <children>
+                <ImageView layoutX="14.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/museum2_32x32.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="50.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="212.0" text="Help" textFill="#eda647">
+                    <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="30.0" />
+                    </font>
+                </Label>
+                <ImageView fx:id="minimizeNewWindow" layoutX="421.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/minimize1_32x32.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="closeNewWindow" layoutX="453.0" layoutY="15.0" onMouseEntered="#transparentOn" onMouseExited="#transparentOff" onMousePressed="#navBarAction" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/close1_32x32.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <Line endX="396.4644775390625" startX="-100.0" stroke="#eda647" strokeWidth="5.0" />
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="335.0" prefWidth="500.0" style="-fx-background-color: #3D4956;" styleClass=".scroll-bar:horizontal .track,.scroll-bar:vertical .track{    -fx-background-color: transparent;    -fx-border-color: transparent;    -fx-background-radius: 0em;}">
+            <children>
+                <ScrollPane layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="500.0" style="-fx-background: #3D4956; -fx-background-color: #3D4956;" styleClass=".scroll-bar:horizontal .track,.scroll-bar:vertical .track{    -fx-background-color: transparent;    -fx-border-color: transparent;    -fx-background-radius: 0em;}">
+                    <content>
+                        <Label alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="480.0" text="The Museum of Art has four rooms that exhibit: drawings, paintings, sculptures and photographs. It is open from 10:00 to 15:00. &#10;Today the museum awaits four groups of tourists from different countries:&#10;   - the Americans are going to arrive at 10:00,&#10;   - the Belgians are due at 11:00,&#10;   - the Czech are going to show up at 11:30,&#10;   - the Danish are going to come at 11:45.&#10;&#10;All tourist groups have some more or less favourite types of art, so they have already declared in which order they want to visit the four exhibitions and how much time they want to spend there:&#10;&#10;• the Americans &#10;drawings (1 h) → paintings (45 min) → sculptures (30 min) → photographs (15 min)&#10;&#10;• the Belgians &#10;paintings (15 min) → sculptures (1 h) → drawings (20 min) → photographs (1 h)&#10;&#10;• the Czech &#10;sculptures (20 min) → paintings (1 h) → drawings (30 min) → photographs (45 min)&#10;&#10;• the Danish &#10;photographs (30 min) → drawings (45 min) → paintings (10 min) → sculptures (1 h)&#10;&#10;Each group is going to have a guide speaking in their own language, so no two groups should visit the same room at the same time (not to disturb each other). However, it is fine if someone has to wait for  a room to become empty, because the museum has got a nice cafe where they can sit in the meantime. &#10;&#10;Is it possible for the visitors to complete their tours in the desired way before the museum is closed? If yes, what time are they going to visit each of the four exhibitions?" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+                            <padding>
+                                <Insets left="20.0" right="20.0" />
+                            </padding>
+                            <font>
+                                <Font name="Arial" size="14.0" />
+                            </font>
+                        </Label>
+                    </content>
+                </ScrollPane>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

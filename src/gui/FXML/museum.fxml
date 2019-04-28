@@ -71,7 +71,7 @@
                                 <Font name="Arial" size="12.0" />
                             </font>
                         </JFXButton>
-                        <JFXButton alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #eda647;" text="Help" textAlignment="CENTER" textFill="#3d4956">
+                        <JFXButton fx:id="museumHelp" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#museumHelpAction" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #eda647;" text="Help" textAlignment="CENTER" textFill="#3d4956">
                             <font>
                                 <Font name="Arial" size="12.0" />
                             </font>
@@ -95,7 +95,7 @@
                                 <Font name="Arial" size="12.0" />
                             </font>
                         </JFXButton>
-                        <JFXButton fx:id="museumGanttChart" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#museumGanttChartAction" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #eda647;" text="Gantt Chart" textAlignment="CENTER" textFill="#3d4956">
+                        <JFXButton fx:id="museumGanttChart" alignment="CENTER" disable="true" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#museumGanttChartAction" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #eda647;" text="Gantt Chart" textAlignment="CENTER" textFill="#3d4956">
                             <font>
                                 <Font name="Arial" size="12.0" />
                             </font>
