@@ -16,7 +16,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MuseumController">
     <children>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #3D4956;">
+        <AnchorPane fx:id="navBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #3D4956;">
             <children>
                 <ImageView layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -66,12 +66,12 @@
                 </TableView>
                 <HBox focusTraversable="true" layoutX="356.0" layoutY="204.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="185.0" spacing="25.0">
                     <children>
-                        <JFXButton fx:id="museumClean" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#museumCleanAction" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #eda647;" text="Clean" textAlignment="CENTER" textFill="#3d4956">
+                        <JFXButton fx:id="museumClean" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#museumCleanAction" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #eda647;" text="Clean" textAlignment="CENTER" textFill="#3d4956">
                             <font>
                                 <Font name="Arial" size="12.0" />
                             </font>
                         </JFXButton>
-                        <JFXButton fx:id="museumHelp" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#museumHelpAction" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #eda647;" text="Help" textAlignment="CENTER" textFill="#3d4956">
+                        <JFXButton fx:id="museumHelp" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#museumHelpAction" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #eda647;" text="Help" textAlignment="CENTER" textFill="#3d4956">
                             <font>
                                 <Font name="Arial" size="12.0" />
                             </font>

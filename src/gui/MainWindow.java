@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.util.ArrayList;
@@ -62,12 +63,14 @@ public class MainWindow extends Application {
     }
 
     private void makeMovable(Scene page) {
-        page.setOnMousePressed(e -> {
+        AnchorPane navBar = (AnchorPane) page.lookup("#navBar");
+
+        navBar.setOnMousePressed(e -> {
             xOffset = e.getSceneX();
             yOffset = e.getSceneY();
         });
 
-        page.setOnMouseDragged(e -> {
+        navBar.setOnMouseDragged(e -> {
             mainWindow.setX(e.getScreenX() - xOffset);
             mainWindow.setY(e.getScreenY() - yOffset);
         });

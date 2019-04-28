@@ -9,6 +9,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -31,12 +32,14 @@ public abstract class BasicOptions {
     protected double yOffset = 0;
 
     protected void makeMovable(Stage stage, Scene page) {
-        page.setOnMousePressed(e -> {
+        AnchorPane navBar = (AnchorPane) page.lookup("#navBar");
+
+        navBar.setOnMousePressed(e -> {
             xOffset = e.getSceneX();
             yOffset = e.getSceneY();
         });
 
-        page.setOnMouseDragged(e -> {
+        navBar.setOnMouseDragged(e -> {
             stage.setX(e.getScreenX() - xOffset);
             stage.setY(e.getScreenY() - yOffset);
         });

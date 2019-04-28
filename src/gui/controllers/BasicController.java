@@ -30,6 +30,7 @@ public abstract class BasicController extends BasicOptions {
     @FXML private AnchorPane einstein;
     @FXML private AnchorPane museum;
     @FXML private AnchorPane mapColoring;
+    @FXML private AnchorPane navBar;
 
     @FXML
     void navBarAction(MouseEvent e) throws IOException {
