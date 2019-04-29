@@ -1,6 +1,9 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.jacop.constraints.Alldifferent;
 import org.jacop.constraints.Constraint;
 import org.jacop.core.IntVar;
@@ -35,7 +38,7 @@ public class MapColoring extends Base {
     
     @Override
     public String search() {
-        String output = new String();
+        String output = "";
         long T1, T2;
 	T1 = System.nanoTime();
         
@@ -49,12 +52,13 @@ public class MapColoring extends Base {
         return output;
     }
     
-     public void sendGroup(ArrayList<Character> neighboringRegions) {
+     public void sendGroup(Set<Character> neighboringRegions) {
         group = new IntVar[neighboringRegions.size()];
         int regionInAscii;
 
+        List<Character> lisfOfRegions = new ArrayList<>(neighboringRegions);
         for (int i = 0; i < neighboringRegions.size(); i++) {
-            regionInAscii  = (int)neighboringRegions.get(i) - 65;
+            regionInAscii  = (int)lisfOfRegions.get(i) - 65;
             group[i] = regions[regionInAscii];
         }
         Constraint ctr = new Alldifferent(group);
@@ -91,11 +95,6 @@ public class MapColoring extends Base {
         return Colors.values()[i];
     }
     
-    public enum Colors {
-        blue, 
-        green, 
-        red, 
-        yellow, 
-    }
+    public enum Colors { blue, green, red, yellow }
     
 }

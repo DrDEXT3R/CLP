@@ -27,7 +27,7 @@
                         <Image url="@../images/map2_32x32.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="50.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" text="Map Coloring" textFill="#eda647">
+                <Label focusTraversable="false" layoutX="50.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" text="Map Coloring" textFill="#eda647">
                     <font>
                         <Font name="Berlin Sans FB Demi Bold" size="30.0" />
                     </font>
@@ -55,9 +55,9 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4956" height="83.0" layoutX="59.0" layoutY="147.0" stroke="#eda647" strokeType="INSIDE" width="210.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4956" height="60.0" layoutX="59.0" layoutY="80.0" stroke="#eda647" strokeType="INSIDE" width="210.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4956" height="35.0" layoutX="59.0" layoutY="39.0" stroke="#eda647" strokeType="INSIDE" width="210.0" />
-                <TableView fx:id="mapColoringTableView" layoutX="282.0" layoutY="39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="258.0" style="-fx-background-color: #3D4956;">
+                <TableView fx:id="mapColoringTableView" focusTraversable="false" layoutX="282.0" layoutY="39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="258.0" style="-fx-background-color: #3D4956;">
                     <placeholder>
-                        <Label style="-fx-text-fill: #eda647;" text="Please click on Solve button.">
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-text-fill: #eda647;" text="Please click on Solve button.">
                             <font>
                                 <Font name="Berlin Sans FB Demi Bold" size="20.0" />
                             </font>
@@ -90,7 +90,7 @@
                 </HBox>
                 <Group layoutX="59.0" layoutY="239.0">
                     <children>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="55.0" text="Time: " textFill="#eda647">
+                        <Label focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="55.0" text="Time: " textFill="#eda647">
                             <font>
                                 <Font name="Berlin Sans FB Demi Bold" size="20.0" />
                             </font>
@@ -98,12 +98,12 @@
                         <TextFlow fx:id="mapColoringTime" layoutX="55.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
                     </children>
                 </Group>
-                <Label layoutX="65.0" layoutY="38.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="145.0" text="Set number of regions" textAlignment="CENTER" textFill="#eda647">
+                <Label focusTraversable="false" layoutX="65.0" layoutY="38.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="145.0" text="Set number of regions" textAlignment="CENTER" textFill="#eda647">
                     <font>
                         <Font name="Berlin Sans FB Demi Bold" size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="65.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="75.0" text="Put regions" textFill="#eda647">
+                <Label focusTraversable="false" layoutX="65.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="75.0" text="Put regions" textFill="#eda647">
                     <font>
                         <Font name="Berlin Sans FB Demi Bold" size="14.0" />
                     </font>
@@ -113,10 +113,10 @@
                         <Font name="Arial" size="12.0" />
                     </font>
                 </JFXButton>
-            <JFXComboBox fx:id="noOfRegionsComboBox" focusColor="#3d4956" layoutX="205.0" layoutY="43.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#noOfRegionsComboBoxAction" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #eda647;" unFocusColor="#eda647" />
-            <JFXTextField fx:id="groupTextField" focusColor="#3d4956" layoutX="65.0" layoutY="105.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" style="-fx-text-inner-color: #eda647; -fx-font-size: 14;" unFocusColor="#eda647" />
-            <JFXTextArea fx:id="allGroups" editable="false" focusColor="#3d4956" layoutX="64.0" layoutY="152.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="200.0" style="-fx-text-inner-color: #eda647;" unFocusColor="#3d4956" />
-            <Label fx:id="inputRangeLabel" layoutX="139.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="100.0" textFill="#eda647">
+            <JFXComboBox fx:id="noOfRegionsComboBox" focusColor="#3d4956" focusTraversable="false" layoutX="205.0" layoutY="43.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#noOfRegionsComboBoxAction" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #eda647;" unFocusColor="#eda647" />
+            <JFXTextField fx:id="groupTextField" focusColor="#3d4956" focusTraversable="false" layoutX="65.0" layoutY="105.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" style="-fx-text-inner-color: #eda647; -fx-font-size: 14;" unFocusColor="#eda647" />
+            <JFXTextArea fx:id="allGroups" editable="false" focusColor="#3d4956" focusTraversable="false" layoutX="64.0" layoutY="152.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="200.0" style="-fx-text-inner-color: #eda647;" unFocusColor="#3d4956" />
+            <Label fx:id="inputRangeLabel" focusTraversable="false" layoutX="139.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="100.0" textFill="#eda647">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="14.0" />
                </font>

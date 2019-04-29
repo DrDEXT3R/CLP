@@ -9,9 +9,7 @@ import gui.MainWindow;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,7 +48,7 @@ public class MapColoringController extends BasicController implements Initializa
 
     String groups;
     boolean mapColoringIsModeled;
-    ArrayList<Character> neighboringRegions;
+    Set<Character> neighboringRegions;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -61,7 +59,7 @@ public class MapColoringController extends BasicController implements Initializa
 
         groups = new String();
         mapColoringIsModeled = false;
-        neighboringRegions = new ArrayList<>();
+        neighboringRegions = new HashSet<>();
     }
 
     @FXML
@@ -88,6 +86,7 @@ public class MapColoringController extends BasicController implements Initializa
         groupTextField.clear();
         noOfRegionsComboBox.setDisable(true);
 
+        mapColoringSolve.setDisable(false);
     }
 
     @FXML
@@ -116,6 +115,7 @@ public class MapColoringController extends BasicController implements Initializa
         activeModule.setNoOfRegions(noOfRegionsComboBox.getValue());
 
         defaultModeHideUI(false);
+        mapColoringSolve.setDisable(true);
         setRangeLabel();
         validateGroup();
     }
@@ -123,12 +123,13 @@ public class MapColoringController extends BasicController implements Initializa
     private void validateGroup() {
         groupTextField.addEventFilter(KeyEvent.KEY_TYPED, event -> {
             char inputKey = event.getCharacter().charAt(0);
+            int groupLenght = groupTextField.getText().length();
             int ascii_a = (noOfRegionsComboBox.getValue() + 96);
             int ascii_A = (noOfRegionsComboBox.getValue() + 64);
             int ascii_Z = 90;
 
             if ( !Character.isAlphabetic(inputKey) || ascii_a < inputKey
-                    || (ascii_A < inputKey && ascii_Z > inputKey) )
+                    || (ascii_A < inputKey && ascii_Z > inputKey) || groupLenght > (noOfRegionsComboBox.getValue()-1) )
                 event.consume();
         });
     }
@@ -162,6 +163,7 @@ public class MapColoringController extends BasicController implements Initializa
         noOfRegionsComboBox.setDisable(hide);
         addGroup.setDisable(hide);
         groupTextField.setDisable(hide);
+        mapColoringSolve.setDisable(hide);
     }
 
     @FXML
