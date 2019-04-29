@@ -10,6 +10,7 @@ import gui.MainWindow;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -84,6 +86,8 @@ public class MapColoringController extends BasicController implements Initializa
 
         neighboringRegions.clear();
         groupTextField.clear();
+        noOfRegionsComboBox.setDisable(true);
+
     }
 
     @FXML
@@ -97,12 +101,12 @@ public class MapColoringController extends BasicController implements Initializa
         fillTableView(solution, mapColoringTableView, mapColoringCols);
 
         // Calculation time.
-        Text time = new Text(round(activeModule.getTime(),6) + "s");
+        Text time = new Text(String.format(Locale.US,"%.6f", round(activeModule.getTime(),6)) + "s");
         time.setFont(Font.font ("Berlin Sans FB Demi", 20));
         time.setFill(Color.valueOf("#eda647"));
         mapColoringTime.getChildren().add(time);
 
-        mapColoringSolve.setDisable(true);
+        solveModeHideUI(true);
     }
 
     @FXML
@@ -111,11 +115,25 @@ public class MapColoringController extends BasicController implements Initializa
         MapColoring activeModule = (MapColoring) mainWindow.getModule(2);
         activeModule.setNoOfRegions(noOfRegionsComboBox.getValue());
 
-        hideUI(false);
+        defaultModeHideUI(false);
         setRangeLabel();
+        validateGroup();
     }
 
-    private void hideUI(boolean hide) {
+    private void validateGroup() {
+        groupTextField.addEventFilter(KeyEvent.KEY_TYPED, event -> {
+            char inputKey = event.getCharacter().charAt(0);
+            int ascii_a = (noOfRegionsComboBox.getValue() + 96);
+            int ascii_A = (noOfRegionsComboBox.getValue() + 64);
+            int ascii_Z = 90;
+
+            if ( !Character.isAlphabetic(inputKey) || ascii_a < inputKey
+                    || (ascii_A < inputKey && ascii_Z > inputKey) )
+                event.consume();
+        });
+    }
+
+    private void defaultModeHideUI(boolean hide) {
         groupTextField.setDisable(hide);
         mapColoringSolve.setDisable(hide);
         addGroup.setDisable(hide);
@@ -133,10 +151,17 @@ public class MapColoringController extends BasicController implements Initializa
         mapColoringTableView.getItems().clear();
         allGroups.clear();
         groupTextField.clear();
-        noOfRegionsComboBox.valueProperty().set(null);
+        noOfRegionsComboBox.setValue(1);
         groups = new String();
         mapColoringIsModeled = false;
-        hideUI(true);
+        solveModeHideUI(false);
+        defaultModeHideUI(true);
+    }
+
+    private void solveModeHideUI (boolean hide) {
+        noOfRegionsComboBox.setDisable(hide);
+        addGroup.setDisable(hide);
+        groupTextField.setDisable(hide);
     }
 
     @FXML

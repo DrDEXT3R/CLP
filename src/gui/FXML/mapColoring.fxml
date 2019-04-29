@@ -115,7 +115,7 @@
                 </JFXButton>
             <JFXComboBox fx:id="noOfRegionsComboBox" focusColor="#3d4956" layoutX="205.0" layoutY="43.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#noOfRegionsComboBoxAction" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #eda647;" unFocusColor="#eda647" />
             <JFXTextField fx:id="groupTextField" focusColor="#3d4956" layoutX="65.0" layoutY="105.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="130.0" style="-fx-text-inner-color: #eda647; -fx-font-size: 14;" unFocusColor="#eda647" />
-            <JFXTextArea fx:id="allGroups" focusColor="#3d4956" layoutX="64.0" layoutY="152.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="200.0" style="-fx-text-inner-color: #eda647;" unFocusColor="#3d4956" />
+            <JFXTextArea fx:id="allGroups" editable="false" focusColor="#3d4956" layoutX="64.0" layoutY="152.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="200.0" style="-fx-text-inner-color: #eda647;" unFocusColor="#3d4956" />
             <Label fx:id="inputRangeLabel" layoutX="139.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="100.0" textFill="#eda647">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="14.0" />
