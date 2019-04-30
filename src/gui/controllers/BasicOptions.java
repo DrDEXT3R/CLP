@@ -1,5 +1,6 @@
 package gui.controllers;
 
+import core.Base;
 import gui.MainWindow;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -10,6 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,6 +23,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
+import java.util.Locale;
 
 /**
  * Abstract class template for controllers.
@@ -91,7 +97,14 @@ public abstract class BasicOptions {
         });
     }
 
-    public static double round(double value, int places) {
+    protected void setTimeLabel(Base activeModule, TextFlow timeLabel) {
+        Text time = new Text(String.format(Locale.US,"%.6f", round(activeModule.getTime(),6)) + "s");
+        time.setFont(Font.font ("Berlin Sans FB Demi", 20));
+        time.setFill(Color.valueOf("#eda647"));
+        timeLabel.getChildren().add(time);
+    }
+
+    protected static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 
         BigDecimal bd = new BigDecimal(value);

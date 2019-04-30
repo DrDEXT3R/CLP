@@ -150,7 +150,7 @@ public class Museum extends Base {
     public String search() {
         String output = new String();
         long T1, T2;
-	T1 = System.nanoTime();
+	    T1 = System.nanoTime();
         
         SelectChoicePoint<IntVar> select = new SimpleSelect<>(vars.toArray(new IntVar[1]), null, new IndomainMin<>());
         label = new DepthFirstSearch<>();   

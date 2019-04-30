@@ -5,7 +5,7 @@ Thanks to it, we can quickly see solution of:
  - Scheduling problem (Museum of Art)
  - Optimization problems (Map Coloring)
 
-![UI](https://i.imgur.com/ddb0IVm.png)
+![UI](CLP_Calculator.PNG)
 
 ## Deployment
 VM options:

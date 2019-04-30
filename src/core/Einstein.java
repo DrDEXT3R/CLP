@@ -21,12 +21,11 @@ public class Einstein extends Base {
     
     final int SIZE = 5;
     
-    enum Pet { DOGS, BIRDS, HORSES, CATS, FISH; }
-    enum Drink { TEA, COFFEE, MILK, BEER, WATER; }
-    enum Color { RED, GREEN, WHITE, YELLOW, BLUE; }
-    enum Nation { ENGLISHMAN, SWEDE, DANE, NORWEGIAN, GERMAN; }
-    enum Cigarette { PALLMALL, DUNHILL, BLUEMASTER, PRINCE, BLEND; }
-    enum OrderOfCategories { COLOR, NATION, PET, DRINK, CIGARETTE; }
+    enum Pet { DOGS, BIRDS, HORSES, CATS, FISH }
+    enum Drink { TEA, COFFEE, MILK, BEER, WATER }
+    enum Color { RED, GREEN, WHITE, YELLOW, BLUE }
+    enum Nation { ENGLISHMAN, SWEDE, DANE, NORWEGIAN, GERMAN }
+    enum Cigarette { PALLMALL, DUNHILL, BLUEMASTER, PRINCE, BLEND }
     
     @Override
     public void model() {
@@ -81,7 +80,7 @@ public class Einstein extends Base {
     public String search() {
         String output = new String();
         long T1, T2;
-	T1 = System.nanoTime();
+        T1 = System.nanoTime();
         
         SelectChoicePoint<IntVar> select = new SimpleSelect<>(vars.toArray(new IntVar[1]), null, new IndomainMin<>());
         label = new DepthFirstSearch<>();   

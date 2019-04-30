@@ -40,7 +40,7 @@ public class MapColoring extends Base {
     public String search() {
         String output = "";
         long T1, T2;
-	T1 = System.nanoTime();
+	    T1 = System.nanoTime();
         
         SelectChoicePoint select = new InputOrderSelect (store, regions, new IndomainMin());
         label = new DepthFirstSearch<>();   
@@ -71,7 +71,6 @@ public class MapColoring extends Base {
     
     @Override
     public String[][] getSolutionAsArray() {
-        
         String[][] solution = new String[4][3];
         for (int i = 0; i < 4; i++) 
             solution[i][0] = "";

@@ -9,14 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Locale;
 
 /**
  * FXML Controller class for museum time schedule.
@@ -55,12 +51,7 @@ public class MuseumController extends BasicController {
         TableColumn[] museumCols = {nationColumn, drawingsColumn, paintingsColumn, sculpturesColumn, photographsColumn};
         fillTableView(solution, museumTableView, museumCols);
 
-        // Calculation time.
-        Text time = new Text(String.format(Locale.US,"%.6f", round(activeModule.getTime(),6)) + "s");
-        time.setFont(Font.font ("Berlin Sans FB Demi", 20));
-        time.setFill(Color.valueOf("#eda647"));
-        museumTime.getChildren().add(time);
-
+        setTimeLabel(activeModule, museumTime);
         museumSolve.setDisable(true);
         museumGanttChart.setDisable(false);
     }

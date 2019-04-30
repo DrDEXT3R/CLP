@@ -5,15 +5,11 @@ import core.Einstein;
 import gui.MainWindow;
 
 import java.io.IOException;
-import java.util.Locale;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 /**
@@ -44,12 +40,7 @@ public class EinsteinController extends BasicController{
         TableColumn[] einsteinCols = {houseColumn, colourColumn, nationColumn, petColumn, drinkColumn, cigarColumn};
         fillTableView(solution, einsteinTableView, einsteinCols);
 
-        // Calculation time.
-        Text time = new Text(String.format(Locale.US,"%.6f", round(activeModule.getTime(),6)) + "s");
-        time.setFont(Font.font ("Berlin Sans FB Demi", 20));
-        time.setFill(Color.valueOf("#eda647"));
-        einsteinTime.getChildren().add(time);
-
+        setTimeLabel(activeModule, einsteinTime);
         einsteinSolve.setDisable(true);
     }
 

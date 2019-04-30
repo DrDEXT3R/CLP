@@ -20,9 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 /**
@@ -64,15 +61,7 @@ public class MapColoringController extends BasicController implements Initializa
 
     @FXML
     void addGroupAction(ActionEvent e) {
-        String s = groupTextField.getText().toUpperCase();
-        groups += s + "\n";
-        allGroups.setText(groups);
-
-        for (int i = 0; i < s.length(); i++) {
-            char takenChar = s.charAt(i);
-            if(takenChar != ' ')
-                neighboringRegions.add(takenChar);
-        }
+        readGroup();
 
         MainWindow mainWindow = new MainWindow();
         MapColoring activeModule = (MapColoring) mainWindow.getModule(2);
@@ -85,8 +74,19 @@ public class MapColoringController extends BasicController implements Initializa
         neighboringRegions.clear();
         groupTextField.clear();
         noOfRegionsComboBox.setDisable(true);
-
         mapColoringSolve.setDisable(false);
+    }
+
+    private void readGroup() {
+        String s = groupTextField.getText().toUpperCase();
+        groups += s + "\n";
+        allGroups.setText(groups);
+
+        for (int i = 0; i < s.length(); i++) {
+            char takenChar = s.charAt(i);
+            if(takenChar != ' ')
+                neighboringRegions.add(takenChar);
+        }
     }
 
     @FXML
@@ -99,13 +99,15 @@ public class MapColoringController extends BasicController implements Initializa
         TableColumn[] mapColoringCols = {regionsColumn, colorIndexColumn, colorNameColumn};
         fillTableView(solution, mapColoringTableView, mapColoringCols);
 
-        // Calculation time.
-        Text time = new Text(String.format(Locale.US,"%.6f", round(activeModule.getTime(),6)) + "s");
-        time.setFont(Font.font ("Berlin Sans FB Demi", 20));
-        time.setFill(Color.valueOf("#eda647"));
-        mapColoringTime.getChildren().add(time);
-
+        setTimeLabel(activeModule, mapColoringTime);
         solveModeHideUI(true);
+    }
+
+    private void solveModeHideUI (boolean hide) {
+        noOfRegionsComboBox.setDisable(hide);
+        addGroup.setDisable(hide);
+        groupTextField.setDisable(hide);
+        mapColoringSolve.setDisable(hide);
     }
 
     @FXML
@@ -118,6 +120,18 @@ public class MapColoringController extends BasicController implements Initializa
         mapColoringSolve.setDisable(true);
         setRangeLabel();
         validateGroup();
+    }
+
+    private void defaultModeHideUI(boolean hide) {
+        groupTextField.setDisable(hide);
+        mapColoringSolve.setDisable(hide);
+        addGroup.setDisable(hide);
+    }
+
+    private void setRangeLabel() {
+        char border1 = (char) (noOfRegionsComboBox.getValue() + 64);
+        char border2 = (char) (noOfRegionsComboBox.getValue() + 96);
+        inputRangeLabel.setText("(A-" + border1 + " or a-" + border2 + ")");
     }
 
     private void validateGroup() {
@@ -134,18 +148,6 @@ public class MapColoringController extends BasicController implements Initializa
         });
     }
 
-    private void defaultModeHideUI(boolean hide) {
-        groupTextField.setDisable(hide);
-        mapColoringSolve.setDisable(hide);
-        addGroup.setDisable(hide);
-    }
-
-    private void setRangeLabel() {
-        char border1 = (char) (noOfRegionsComboBox.getValue() + 64);
-        char border2 = (char) (noOfRegionsComboBox.getValue() + 96);
-        inputRangeLabel.setText("(A-" + border1 + " or a-" + border2 + ")");
-    }
-
     @FXML
     void mapColoringCleanAction(ActionEvent e) {
         mapColoringTime.getChildren().clear();
@@ -157,13 +159,6 @@ public class MapColoringController extends BasicController implements Initializa
         mapColoringIsModeled = false;
         solveModeHideUI(false);
         defaultModeHideUI(true);
-    }
-
-    private void solveModeHideUI (boolean hide) {
-        noOfRegionsComboBox.setDisable(hide);
-        addGroup.setDisable(hide);
-        groupTextField.setDisable(hide);
-        mapColoringSolve.setDisable(hide);
     }
 
     @FXML
