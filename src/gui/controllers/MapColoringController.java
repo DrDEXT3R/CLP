@@ -41,10 +41,16 @@ public class MapColoringController extends BasicController implements Initializa
     @FXML private TableColumn<String[], String> colorIndexColumn;
     @FXML private TableColumn<String[], String> colorNameColumn;
 
+    /** The ObservableList needed for noOfRegionsComboBox where the user selects the number of regions. */
     ObservableList<Integer> list = FXCollections.observableArrayList();
 
+    /** The String containing all the region groups entered by the user. */
     String groups;
+
+    /** The variable indicating whether the CLP problem has been modeled. */
     boolean mapColoringIsModeled;
+
+    /** The set containing neighboring regions. */
     Set<Character> neighboringRegions;
 
     @Override
@@ -77,6 +83,9 @@ public class MapColoringController extends BasicController implements Initializa
         mapColoringSolve.setDisable(false);
     }
 
+    /**
+     * This method reads the neighboring regions entered by the user and places them in a special set.
+     */
     private void readGroup() {
         String s = groupTextField.getText().toUpperCase();
         groups += s + "\n";
@@ -103,6 +112,10 @@ public class MapColoringController extends BasicController implements Initializa
         solveModeHideUI(true);
     }
 
+    /**
+     * The UI look after pressing the solve button.
+     * @param hide  informs about the visibility of elements.
+     */
     private void solveModeHideUI (boolean hide) {
         noOfRegionsComboBox.setDisable(hide);
         addGroup.setDisable(hide);
@@ -122,18 +135,28 @@ public class MapColoringController extends BasicController implements Initializa
         validateGroup();
     }
 
+    /**
+     * The UI look before pressing the solve button.
+     * @param hide  informs about the visibility of elements.
+     */
     private void defaultModeHideUI(boolean hide) {
         groupTextField.setDisable(hide);
         mapColoringSolve.setDisable(hide);
         addGroup.setDisable(hide);
     }
 
+    /**
+     * This method sets the label informing about the range of the regions being typed.
+     */
     private void setRangeLabel() {
         char border1 = (char) (noOfRegionsComboBox.getValue() + 64);
         char border2 = (char) (noOfRegionsComboBox.getValue() + 96);
         inputRangeLabel.setText("(A-" + border1 + " or a-" + border2 + ")");
     }
 
+    /**
+     * Checks the correctness of the entered regions.
+     */
     private void validateGroup() {
         groupTextField.addEventFilter(KeyEvent.KEY_TYPED, event -> {
             char inputKey = event.getCharacter().charAt(0);

@@ -33,10 +33,17 @@ import java.util.Locale;
  */
 public abstract class BasicOptions {
 
-    // Variables used to make movable application.
+    /** The variable used to make movable application. */
     protected double xOffset = 0;
+
+    /** The variable used to make movable application. */
     protected double yOffset = 0;
 
+    /**
+     * This method is responsible for ensuring movable.
+     * @param stage stage to move.
+     * @param page  current scene.
+     */
     protected void makeMovable(Stage stage, Scene page) {
         AnchorPane navBar = (AnchorPane) page.lookup("#navBar");
 
@@ -51,6 +58,11 @@ public abstract class BasicOptions {
         });
     }
 
+    /**
+     * This method is responsible for loading the new scene onto the stage.
+     * @param location      location of the fxml file.
+     * @throws IOException  can be thrown by load().
+     */
     protected void loadNewScene(String location) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(location));
@@ -64,6 +76,13 @@ public abstract class BasicOptions {
         newWindow.show();
     }
 
+    /**
+     * This method is responsible for creating a new stage.
+     * @param location      location of the fxml file.
+     * @param width         stage width.
+     * @param height        stage height.
+     * @throws IOException  can be thrown by load().
+     */
     protected void createNewStage(String location, int width, int height) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(location));
@@ -81,6 +100,12 @@ public abstract class BasicOptions {
         newWindow.show();
     }
 
+    /**
+     * This method fills the TableView in which solutions of CLP problems are presented.
+     * @param solution  array of solution.
+     * @param tableView specific TableView to fill.
+     * @param tableCols array of columns.
+     */
     protected void fillTableView(String[][] solution, TableView tableView, TableColumn[] tableCols) {
         ObservableList<String[]> data = FXCollections.observableArrayList();
         data.addAll(Arrays.asList(solution));
@@ -88,8 +113,13 @@ public abstract class BasicOptions {
 
         for (int i = 0; i < tableCols.length ; i++)
             this.setColumn(tableCols[i], i);
-}
+    }
 
+    /**
+     * This method is responsible for filling the column of TableView which is the solution of the CLP problem.
+     * @param column    specific column to fill.
+     * @param colNo     column number from the TableView.
+     */
     protected void setColumn(TableColumn<String[], String> column, int colNo) {
         column.setCellValueFactory(cellData -> {
             String[] x = cellData.getValue();
@@ -97,6 +127,11 @@ public abstract class BasicOptions {
         });
     }
 
+    /**
+     * This method sets the time label which is the time to look for a solution of the CLP problem.
+     * @param activeModule  type of CLP problem.
+     * @param timeLabel     specific label to fill.
+     */
     protected void setTimeLabel(Base activeModule, TextFlow timeLabel) {
         Text time = new Text(String.format(Locale.US,"%.6f", round(activeModule.getTime(),6)) + "s");
         time.setFont(Font.font ("Berlin Sans FB Demi", 20));
@@ -104,6 +139,12 @@ public abstract class BasicOptions {
         timeLabel.getChildren().add(time);
     }
 
+    /**
+     * This method rounds the floating point number (solve time).
+     * @param value     number for rounding.
+     * @param places    number of decimal places.
+     * @return          rounded number.
+     */
     protected static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 

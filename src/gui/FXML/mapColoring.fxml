@@ -64,9 +64,9 @@
                         </Label>
                     </placeholder>
                     <columns>
-                        <TableColumn fx:id="regionsColumn" editable="false" maxWidth="1.7976931348623157E308" minWidth="96.0" prefWidth="96.0" style="-fx-base: #eda647; -fx-text-fill: #3D4956; -fx-alignment: center; -fx-font-family: Arial; -fx-font-size: 12;" text="Regions" />
-                        <TableColumn fx:id="colorIndexColumn" editable="false" maxWidth="80.0" minWidth="80.0" style="-fx-base: #eda647; -fx-text-fill: #3D4956; -fx-alignment: center; -fx-font-family: Arial; -fx-font-size: 12;" text="Color index" />
-                        <TableColumn fx:id="colorNameColumn" editable="false" maxWidth="80.0" minWidth="80.0" style="-fx-base: #eda647; -fx-text-fill: #3D4956; -fx-alignment: center; -fx-font-family: Arial; -fx-font-size: 12;" text="Color name" />
+                        <TableColumn fx:id="regionsColumn" editable="false" maxWidth="1.7976931348623157E308" minWidth="96.0" prefWidth="96.0" sortable="false" style="-fx-base: #eda647; -fx-text-fill: #3D4956; -fx-alignment: center; -fx-font-family: Arial; -fx-font-size: 12;" text="Regions" />
+                        <TableColumn fx:id="colorIndexColumn" editable="false" maxWidth="80.0" minWidth="80.0" sortable="false" style="-fx-base: #eda647; -fx-text-fill: #3D4956; -fx-alignment: center; -fx-font-family: Arial; -fx-font-size: 12;" text="Color index" />
+                        <TableColumn fx:id="colorNameColumn" editable="false" maxWidth="80.0" minWidth="80.0" sortable="false" style="-fx-base: #eda647; -fx-text-fill: #3D4956; -fx-alignment: center; -fx-font-family: Arial; -fx-font-size: 12;" text="Color name" />
                     </columns>
                 </TableView>
                 <HBox focusTraversable="true" layoutX="282.0" layoutY="206.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="258.0" spacing="9.0">

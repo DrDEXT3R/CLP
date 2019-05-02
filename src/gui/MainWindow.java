@@ -16,20 +16,25 @@ import java.util.ArrayList;
 import javafx.stage.StageStyle;
 
 /**
- * Main class.
+ * The main class.
  * 
  * @author Tomasz Strzoda
  */
 public class MainWindow extends Application {
-    
+
+    /** The main stage of the entire application. */
     private static Stage mainWindow;
+
+    /** The ArrayList containing all CLP problems. */
     private static ArrayList<Base> modules;
        
     public static void main(String[] args) {
         launch(args); 
     }
 
+    /** {@link gui.controllers.BasicOptions#xOffset} */
     private double xOffset = 0;
+    /** {@link gui.controllers.BasicOptions#yOffset} */
     private double yOffset = 0;
 
     @Override
@@ -52,6 +57,9 @@ public class MainWindow extends Application {
         mainWindow.show();
     }
 
+    /**
+     * This method creates instances of CLP problems.
+     */
     private void loadModules() {
         modules = new ArrayList<>();
         modules.add(new Einstein());
@@ -59,6 +67,10 @@ public class MainWindow extends Application {
         modules.add(new MapColoring());
     }
 
+    /**
+     * This method is responsible for ensuring movable.
+     * @param page current scene.
+     */
     private void makeMovable(Scene page) {
         AnchorPane navBar = (AnchorPane) page.lookup("#navBar");
 
@@ -72,11 +84,20 @@ public class MainWindow extends Application {
             mainWindow.setY(e.getScreenY() - yOffset);
         });
     }
-    
+
+    /**
+     * This method returns the instance of the main application.
+     * @return main application.
+     */
     public Stage getStage() {
         return mainWindow;
     }
-    
+
+    /**
+     * This method returns an instance of the CLP problem.
+     * @param module    problem number.
+     * @return          instance of the CLP problem.
+     */
     public Base getModule(int module) {
         return modules.get(module);
     }

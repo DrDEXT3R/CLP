@@ -6,44 +6,59 @@ import org.jacop.core.Store;
 import org.jacop.search.Search;
 
 /**
- * Abstract class template for CLP problems.
+ * The abstract class template for CLP problems.
  * 
  * @author Tomasz Strzoda
  */
 public abstract class Base {
-    
-    // Store for CLP variables
+
+    /** The store for CLP variables. */
     protected Store store;
-    // Label for searching solution
+
+    /** The label for searching solution.*/
     protected Search label;
-    // ArrayList of CLP variables
+
+    /** The ArrayList of CLP variables. */
     protected ArrayList<IntVar> vars;
 
+    /** The variable for storing the solution search time. */
     protected long time_ns;
-    
+
+
+    /**
+     * The class constructor responsible for initializing the ArrayList of CLP variables.
+     */
     public Base() {
         vars = new ArrayList<>();
     }
     
     /**
-     * Method for modeling CLP problem.
+     * The method for modeling a CLP problem.
      */
-    public void model() {   
+    public void model() {
     }
     
     /**
-     * Method for searching solution CLP problem.
-     * @return solution of CLP problem.
+     * The method for searching solution of a CLP problem.
+     * @return  solution of CLP problem.
      */
-    public String search() {    
+    public String search() {
        return "";
     }
-    
-    public String[][] getSolutionAsArray() { 
+
+    /**
+     * This method obtains the solution of a CLP problem.
+     * @return  solution in the form of an array.
+     */
+    public String[][] getSolutionAsArray() {
         String[][] array = new String[0][0];
         return array;
     }
-    
+
+    /**
+     * This method obtains the solution search time.
+     * @return  solution search time in seconds.
+     */
     public double getTime() {
         return (time_ns/1000000000.0);
     }

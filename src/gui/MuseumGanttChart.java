@@ -19,12 +19,17 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Class for drawing simple Gantt Chart of scheduling problem.
+ * The class for drawing simple Gantt Chart of scheduling problem.
  *
  * @author Tomasz Strzoda
  */
 public class MuseumGanttChart {
 
+    /**
+     * The class constructor which is responsible for the implementation of the entire chart.
+     * @param stage     stage on which to display the chart.
+     * @param solution  solution of the CLP problem.
+     */
     public MuseumGanttChart(Stage stage, int[][] solution) {
         final SwingNode chartSwingNode = new SwingNode();
         chartSwingNode.setContent( new ChartPanel( generateGanttChart(solution) ) );
@@ -39,8 +44,9 @@ public class MuseumGanttChart {
     }
 
     /**
-     * Method for generating Gantt Chart.
-     * @return chart.
+     * The method for generating Gantt Chart.
+     * @param solution  solution of the CLP problem.
+     * @return          chart.
      */
     private JFreeChart generateGanttChart(int[][] solution) {
         final IntervalCategoryDataset dataset = createDataset(solution);
@@ -49,8 +55,9 @@ public class MuseumGanttChart {
     }
 
     /**
-     * Method for creating dataset.
-     * @return dataset.
+     * The method for creating dataset.
+     * @param sol   solution of the CLP problem.
+     * @return      dataset.
      */
     public static IntervalCategoryDataset createDataset(int[][] sol) {
         MainWindow mainWindow = new MainWindow();
@@ -86,8 +93,9 @@ public class MuseumGanttChart {
     }
 
     /**
-     * Method for calculating hours and minutes.
-     * @return date.
+     * The method for calculating hours and minutes.
+     * @param min   number of minutes.
+     * @return      date.
      */
     private static Date date(final int min) {
         final int day = 20, month = 3, year = 2019;

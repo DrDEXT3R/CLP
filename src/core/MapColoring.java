@@ -14,15 +14,24 @@ import org.jacop.search.InputOrderSelect;
 import org.jacop.search.SelectChoicePoint;
 
 /**
- * Class for solving map coloring problem.
+ * The class for solving map coloring problem.
  * 
  * @author Tomasz Strzoda
  */
 public class MapColoring extends Base {
-   
+
+    /** The array for storing the domain of each region. */
     IntVar[] regions;
-    IntVar[] group; 
+
+    /** The array for storing neighboring regions. */
+    IntVar[] group;
+
+    /** The variable for storing number of regions. */
     int noOfRegions;
+
+    /** The enum of all possible colors related to the solution. */
+    public enum Colors { blue, green, red, yellow }
+
     
     @Override
     public void model() {
@@ -51,8 +60,12 @@ public class MapColoring extends Base {
 
         return output;
     }
-    
-     public void sendGroup(Set<Character> neighboringRegions) {
+
+    /**
+     * This method provides different colors for neighboring regions.
+     * @param neighboringRegions set of neighboring regions.
+     */
+    public void sendGroup(Set<Character> neighboringRegions) {
         group = new IntVar[neighboringRegions.size()];
         int regionInAscii;
 
@@ -64,7 +77,11 @@ public class MapColoring extends Base {
         Constraint ctr = new Alldifferent(group);
         store.impose(ctr);  
     }
-     
+
+    /**
+     * This method sets the number of regions specified by the user.
+     * @param i number of regions.
+     */
     public void setNoOfRegions(int i) {
         noOfRegions = i;
     }
@@ -85,15 +102,23 @@ public class MapColoring extends Base {
 
         return solution;
     }
-    
+
+    /**
+     * This method obtains a unique color index number.
+     * @param i color number.
+     * @return  color index.
+     */
     public int getColorIndex(int i){
         return regions[i].value();
     }
-    
+
+    /**
+     * This method obtains a color from enum of colors.
+     * @param i color number.
+     * @return  color.
+     */
     public Colors getColorName(int i){
         return Colors.values()[i];
     }
-    
-    public enum Colors { blue, green, red, yellow }
-    
+
 }

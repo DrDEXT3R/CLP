@@ -13,20 +13,31 @@ import org.jacop.search.SelectChoicePoint;
 import org.jacop.search.SimpleSelect;
 
 /**
- * Class for solving Einstein's Riddle.
+ * The class for solving Einstein's Riddle.
  *
  * @author Tomasz Strzoda
  */
 public class Einstein extends Base {
-    
+
+    /** The constant related to the number of pets, drinks, colors, nations and cigarettes. */
     final int SIZE = 5;
-    
+
+    /** The enum of all possible pets. */
     enum Pet { DOGS, BIRDS, HORSES, CATS, FISH }
+
+    /** The enum of all possible drinks. */
     enum Drink { TEA, COFFEE, MILK, BEER, WATER }
+
+    /** The enum of all possible colors. */
     enum Color { RED, GREEN, WHITE, YELLOW, BLUE }
+
+    /** The enum of all possible nations. */
     enum Nation { ENGLISHMAN, SWEDE, DANE, NORWEGIAN, GERMAN }
+
+    /** The enum of all possible cigarettes. */
     enum Cigarette { PALLMALL, DUNHILL, BLUEMASTER, PRINCE, BLEND }
-    
+
+
     @Override
     public void model() {
         store = new Store();

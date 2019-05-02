@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Abstract class template for controllers.
+ * The abstract class template for controllers.
  * It contains all the basic elements related to "@FXML".
  *
  * @author Tomasz Strzoda

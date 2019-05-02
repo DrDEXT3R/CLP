@@ -10,16 +10,22 @@ import org.jacop.search.SelectChoicePoint;
 import org.jacop.search.SimpleSelect;
 
 /**
- * Class for creating museum time schedule.
+ * The class for creating museum time schedule.
  * 
  * @author Tomasz Strzoda
  */
 public class Museum extends Base {
-    
+
+    /** The constant related to the number of exhibitions. */
     final int SIZE = 4;
-    final int museumStart = 10*60; 
-    
+
+    /** The constant related to the museum's opening hours (given in minutes). */
+    final int museumStart = 10*60;
+
+    /** The array of exhibition names. */
     final String[] exhibitionsNames = { "drawings", "paintings", "sculptures", "photographs" };
+
+    /** The array of times spent in a given exhibition in order of exhibitionsNames. */
     final int[][] durations = { {60, 45, 30, 15},
                                 {20, 15, 60, 60},
                                 {30, 60, 20, 45},
@@ -180,8 +186,8 @@ public class Museum extends Base {
     }
     
     /**
-     * Array for Gantt Chart
-     * @return 
+     * The array for Gantt Chart.
+     * @return  solution in the form of a raw array.
      */
     public int[][] getSolutionAsRawArray() {
         int[][] solution = new int[SIZE][SIZE];
@@ -192,7 +198,12 @@ public class Museum extends Base {
         
         return solution;
     }
-    
+
+    /**
+     * This method changes minutes to time.
+     * @param min   number of minutes.
+     * @return      time specified in String.
+     */
     private static String min2time(final int min) {
         final int hour = min / 60, minute = min % 60;
         String time = (hour < 10 ? "0" : "") + hour;
@@ -200,15 +211,27 @@ public class Museum extends Base {
         time += (minute < 10 ? "0" : "") + minute;
         return time;
     }
-    
+
+    /**
+     * This method returns a constant related to the number of exhibitions.
+     * @return number of exhibitions.
+     */
     public int getSize() {
         return SIZE;
     }
-    
+
+    /**
+     *  This method obtains times spent in a given exhibition.
+     * @return times spent at the exhibitions.
+     */
     public int[][] getDurations() {
         return durations;
     }
-    
+
+    /**
+     * This method obtains exhibition name.
+     * @return exhibition name.
+     */
     public String[] getExhibitionsNames() {
         return exhibitionsNames;
     }
