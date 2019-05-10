@@ -7,6 +7,37 @@ Thanks to it, we can quickly see solution of:
 
 ![UI](CLP_Calculator.PNG)
 
+## Installing
+#### Windows
+1. Download the [file](https://drive.google.com/open?id=15Ofjf2lGzx6isuxqjx1CSVrG1FNaRnKr) and extract it.
+2. Open cmd.
+2. Go to the jre/bin directory using the terminal e.g.:
+```
+cd Desktop/jre/bin
+```
+3. Run the CLP Calculator:
+```
+java --add-modules=javafx.controls,javafx.swing,javafx.fxml -jar CLP-Calculator.jar
+```
+#### Linux
+1. Download the [file](https://drive.google.com/open?id=1YGvjgwLLjX4Ay-ENx-pL3KHExEUJ0Qpw) and extract it.
+2. Install the font by clicking on the file "berlin-sans-fb-demi-bold".
+3. Open the terminal in the folder named CLP_linux.
+4. Enter the following commands:
+```
+sudo apt-get install openjfx
+```
+```
+sudo apt-get install ttf-mscorefonts-installer
+sudo fc-cache
+```
+5. Run the CLP Calculator:
+```
+java --module-path "javafx-sdk-11.0.2/lib" --add-modules=javafx.controls,javafx.swing,javafx.fxml -jar CLP-Calculator.jar
+```
+#### JAR File
+[Download](https://drive.google.com/open?id=1vB7aISYgWkwvvoPGeJO6-QEBL708UNCq)
+
 ## Deployment
 VM options:
 ```
