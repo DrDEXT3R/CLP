@@ -57,7 +57,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4956" height="35.0" layoutX="59.0" layoutY="39.0" stroke="#eda647" strokeType="INSIDE" width="210.0" />
                 <TableView fx:id="mapColoringTableView" focusTraversable="false" layoutX="282.0" layoutY="39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="258.0" style="-fx-background-color: #3D4956;">
                     <placeholder>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-text-fill: #eda647;" text="Please click on Solve button.">
+                        <Label focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-text-fill: #eda647;" text="Please click on Solve button.">
                             <font>
                                 <Font name="Berlin Sans FB Demi Bold" size="20.0" />
                             </font>

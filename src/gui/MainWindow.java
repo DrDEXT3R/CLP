@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.util.ArrayList;
@@ -36,6 +37,13 @@ public class MainWindow extends Application {
     private double xOffset = 0;
     /** {@link gui.controllers.BasicOptions#yOffset} */
     private double yOffset = 0;
+
+    @Override
+    public void init() throws Exception {
+        super.init();
+        Font.loadFont(MainWindow.class.getResource("fonts/berlin-sans-fb-demi-bold.ttf").toExternalForm(),10);
+        Font.loadFont(MainWindow.class.getResource("fonts/arial.ttf").toExternalForm(),10);
+    }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
