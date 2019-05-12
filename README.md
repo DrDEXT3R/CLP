@@ -1,5 +1,5 @@
 # CLP Calculator
-It is a simple calculator for solving problems using Constraint Logic Programming.
+It is a simple calculator for solving problems using Constraint Logic Programming. <br/>
 Thanks to it, we can quickly see solution of:
  - Combinatory problem (Einstein's Riddle)
  - Scheduling problem (Museum of Art)
@@ -9,7 +9,7 @@ Thanks to it, we can quickly see solution of:
 
 ## Installing
 #### Windows
-[CLP-Calculator_win_x86_portable.zip](https://sourceforge.net/projects/clp-calculator/files/CLP-Calculator_win_x86_portable.zip/download)
+[CLP-Calculator_win_x86_portable.zip](https://sourceforge.net/projects/clp-calculator/files/CLP-Calculator_win_x86_portable.zip/download) <br/>
 [CLP-Calculator_win_x64_portable.zip](https://sourceforge.net/projects/clp-calculator/files/CLP-Calculator_win_x64_portable.zip/download)
 
 #### Linux
