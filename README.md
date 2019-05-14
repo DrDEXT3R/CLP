@@ -13,27 +13,14 @@ Thanks to it, we can quickly see solution of:
 [CLP-Calculator_win_x64_portable.zip](https://sourceforge.net/projects/clp-calculator/files/CLP-Calculator_win_x64_portable.zip/download)
 
 #### Linux
-1. Download the [file](https://drive.google.com/open?id=1YGvjgwLLjX4Ay-ENx-pL3KHExEUJ0Qpw) and extract it.
-2. Install the font by clicking on the file "berlin-sans-fb-demi-bold".
-3. Open the terminal in the folder named CLP_linux.
-4. Enter the following commands:
+[CLP-Calculator_linux.zip](https://sourceforge.net/projects/clp-calculator/files/CLP-Calculator_linux.zip/download) <br/>
+In the downloaded folder, open the terminal and enter:
 ```
-sudo apt-get install openjfx
-```
-```
-sudo apt-get install ttf-mscorefonts-installer
-sudo fc-cache
-```
-5. Run the CLP Calculator:
-```
-java --module-path "javafx-sdk-11.0.2/lib" --add-modules=javafx.controls,javafx.swing,javafx.fxml -jar CLP-Calculator.jar
+$ apt-get install openjfx
+$ java --module-path "javafx-sdk-11.0.2/lib" --add-modules=javafx.controls,javafx.swing,javafx.fxml -jar CLP-Calculator.jar
 ```
 #### JAR File
-[Download](https://sourceforge.net/projects/clp-calculator/files/CLP-Calculator.jar/download)
-Run the CLP Calculator:
-```
-java --module-path "javafx-sdk-11.0.2/lib" --add-modules=javafx.controls,javafx.swing,javafx.fxml -jar CLP-Calculator.jar
-```
+[Download JAR File](https://sourceforge.net/projects/clp-calculator/files/CLP-Calculator.jar/download)  
 
 ## Deployment
 VM options:
