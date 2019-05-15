@@ -35,25 +35,19 @@ public abstract class Base {
     /**
      * The method for modeling a CLP problem.
      */
-    public void model() {
-    }
+    public abstract void model();
     
     /**
      * The method for searching solution of a CLP problem.
      * @return  solution of CLP problem.
      */
-    public String search() {
-       return "";
-    }
+    public abstract String search();
 
     /**
      * This method obtains the solution of a CLP problem.
      * @return  solution in the form of an array.
      */
-    public String[][] getSolutionAsArray() {
-        String[][] array = new String[0][0];
-        return array;
-    }
+    public abstract String[][] getSolutionAsArray();
 
     /**
      * This method obtains the solution search time.
